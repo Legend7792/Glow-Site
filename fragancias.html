@@ -3,80 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragancias | Glow</title>
-
+    <title>Fragancias - Glow</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #fff; margin: 0; }
-        header {
-            background: linear-gradient(135deg, #ff80bf, #ffb3d9);
-            padding: 20px;
-            text-align: center;
-            font-size: 26px;
-            color: white;
-            font-weight: bold;
-        }
-        .container { max-width: 900px; margin: auto; padding: 20px; }
-        h2 { color: #d63384; }
-
-        .product {
-            background: #ffe6f2;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 12px;
-        }
-
+        body { margin: 0; font-family: Arial; background: #fff0f7; color: #4a235a; padding: 20px; }
+        h1 { text-align: center; background: #ffb6e6; padding: 15px; border-radius: 10px; }
+        .product-list { margin-top: 30px; }
+        .product { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .product img { width: 150px; border-radius: 10px; }
+        .back { display: block; margin-bottom: 20px; font-size: 18px; text-decoration: none; color: #4a235a; }
         .whatsapp-button {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25D366;
-            color: white;
-            font-size: 18px;
-            padding: 14px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            font-weight: bold;
+            position: fixed; bottom: 20px; right: 20px;
+            background: #25D366; color: white;
+            padding: 12px 22px; border-radius: 50px;
+            text-decoration: none; font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
     </style>
 </head>
-
 <body>
-<header>Fragancias</header>
 
-<div class="container">
+<a class="back" href="index.html">← Volver al inicio</a>
 
-    <h2>Productos disponibles</h2>
+<h1>Fragancias</h1>
 
-    <!-- EJEMPLO DE PRODUCTO -->
-    <div class="product">
-        <img src="img/fantasy.jpg" alt="Fantasy">
-        <h3>Fantasy</h3>
-        <p>
-            Fragancia dulce, femenina y adictiva.  
-            Notas: kiwi, lichi, cupcake, jazmín y vainilla.  
-            Sensación: dulce, sensual y coqueta.  
-            Efecto: aroma fuerte y duradero.
-        </p>
-    </div>
-    
-    <div class="product">
-         <img src="img/bleu-chanel.jpg" alt="Bleu Chanel">
-         <h3>Bleu Chanel</h3>
-         <p>
-             
-         </p>
-     </div>
+<div class="product-list">
+
+<div class="product">
+    <img src="img/perfume1.jpg" alt="Perfume Bleu de Chanel">
+    <h3>Bleu de Chanel</h3>
+    <p>
+        100ml – $45 USD  
+        150ml – $60 USD  
+        Aroma masculino elegante y duradero.
+    </p>
+</div>
+
+<div class="product">
+    <img src="img/perfume2.jpg" alt="Perfume Good Girl">
+    <h3>Good Girl</h3>
+    <p>
+        80ml – $50 USD  
+        Fragancia femenina dulce e intensa.
+    </p>
+</div>
 
 </div>
 
-<a class="whatsapp-button" href="https://wa.me/5351010895">WhatsApp</a>
+<a class="whatsapp-button" href="https://wa.me/5351010895" target="_blank">WhatsApp</a>
 
 </body>
 </html>
