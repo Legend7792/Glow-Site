@@ -8,12 +8,13 @@ import json
 import os
 
 # ---------------------------------------------------------
-# CONFIGURACIÓN (Railway usa variables de entorno)
+# CONFIGURACIÓN DESDE VARIABLES DE ENTORNO
 # ---------------------------------------------------------
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
-REPO_NAME = "Legend7792/Glow-Site"
+REPO_NAME = os.getenv("REPO_NAME")
+
 JSON_FILE_PATH = "productos.json"
 IMG_FOLDER = "img"
 
@@ -38,15 +39,12 @@ def upload_image_to_github(image_bytes, image_name):
     img_path = f"{IMG_FOLDER}/{image_name}"
 
     try:
-        # Si ya existe
         file = repo.get_contents(img_path)
-        repo.update_file(file.path, "Updating image", image_bytes, file.sha)
+        repo.update_file(file.path, "Actualizando imagen", image_bytes, file.sha)
     except:
-        # Si no existe
-        repo.create_file(img_path, "Adding image", image_bytes)
+        repo.create_file(img_path, "Subiendo imagen", image_bytes)
 
     return img_path
-
 
 def append_product_to_json(product):
     repo = github_client().get_repo(REPO_NAME)
@@ -64,9 +62,9 @@ def append_product_to_json(product):
     new_json = json.dumps(data, indent=4)
 
     if file_sha:
-        repo.update_file(JSON_FILE_PATH, "Updating products", new_json, file_sha)
+        repo.update_file(JSON_FILE_PATH, "Actualizando JSON", new_json, file_sha)
     else:
-        repo.create_file(JSON_FILE_PATH, "Creating JSON", new_json)
+        repo.create_file(JSON_FILE_PATH, "Creando JSON", new_json)
 
 # ---------------------------------------------------------
 # TELEGRAM - PROCESAR MENSAJE
@@ -75,26 +73,28 @@ def append_product_to_json(product):
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if not update.message.photo:
-        await update.message.reply_text("Envía una FOTO + DESCRIPCIÓN del producto.")
+        await update.message.reply_text("Debes enviar FOTO + descripción del producto.")
         return
 
     photo = update.message.photo[-1]
     file = await photo.get_file()
     image_bytes = requests.get(file.file_path).content
+
     image_name = f"producto_{file.file_unique_id}.jpg"
 
     github_img_path = upload_image_to_github(image_bytes, image_name)
+
     description = update.message.caption if update.message.caption else "Sin descripción"
 
     product = {
-        "nombre": "Producto agregado automáticamente",
+        "nombre": "Producto automático",
         "descripcion": description,
-        "imagen": github_img_path,
-        "categoria": "Pendiente"
+        "imagen": github_img_path
     }
 
     append_product_to_json(product)
-    await update.message.reply_text("Producto añadido correctamente a la web.")
+
+    await update.message.reply_text("Producto agregado correctamente.")
 
 # ---------------------------------------------------------
 # INICIO DEL BOT
