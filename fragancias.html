@@ -1,22 +1,81 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fragancias - Glow</title>
     <style>
-        body { margin: 0; font-family: Arial; background: #fff0f7; color: #4a235a; padding: 20px; }
-        h1 { text-align: center; background: #ffb6e6; padding: 15px; border-radius: 10px; }
-        .product-list { margin-top: 30px; }
-        .product { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .product img { width: 150px; border-radius: 10px; }
-        .back { display: block; margin-bottom: 20px; font-size: 18px; text-decoration: none; color: #4a235a; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff0f7;
+            color: #4a235a;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            background: #ffb6e6;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .product-list {
+            margin-top: 30px;
+        }
+
+        .product {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Ajuste para múltiples imágenes */
+        .product img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .ws-button {
+            display: inline-block;
+            margin-top: 15px;
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #4a235a;
+        }
+
+        /* BOTÓN FLOTANTE WHATSAPP */
         .whatsapp-button {
-            position: fixed; bottom: 20px; right: 20px;
-            background: #25D366; color: white;
-            padding: 12px 22px; border-radius: 50px;
-            text-decoration: none; font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            padding: 14px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+
+        .whatsapp-button:hover {
+            background: #1da851;
         }
     </style>
 </head>
