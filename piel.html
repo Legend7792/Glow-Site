@@ -27,14 +27,18 @@
         .product {
             background: white;
             padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
+        /* Ajuste para múltiples imágenes */
         .product img {
-            width: 150px;
-            border-radius: 10px;
+            width: 100%;
+            max-width: 350px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display: block;
         }
 
         .ws-button {
@@ -55,6 +59,25 @@
             text-decoration: none;
             color: #4a235a;
         }
+
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            padding: 14px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+
+        .whatsapp-button:hover {
+            background: #1da851;
+        }
     </style>
 </head>
 <body>
@@ -65,29 +88,37 @@
 
 <div class="product-list">
 
-    <!-- PRODUCTO DE EJEMPLO -->
-    
-<div class="product">
-    <img src="img/facial-mask1.jpg" alt="Mascarillas Faciales">
-    <h3>Mascarillas Faciales</h3>
-    <p>
-        
-    </p>
+    <!-- PRODUCTO 1 -->
+    <div class="product">
+        <img src="img/facial-mask1.jpg" alt="Mascarillas Faciales">
+        <h3>Mascarillas Faciales</h3>
+        <p>Descripción pendiente…</p>
+    </div>
+
+    <!-- PRODUCTO 2 -->
+    <div class="product">
+        <img src="img/facial-mask.jpg" alt="Mascarillas Faciales En Barritas">
+
+        <!-- Si quieres más imágenes, SOLO COPIA ESTO -->
+        <!--
+        <img src="img/imagen2.jpg" alt="Imagen adicional">
+        <img src="img/imagen3.jpg" alt="Imagen adicional">
+        -->
+
+        <h3>Mascarillas Faciales En Barritas</h3>
+        <p>
+            ✨ $2900  
+            - Naranja 🍊  
+            - Té verde 🍵  
+            - Rosa 🌹  
+            - Blueberry 🫐  
+        </p>
+    </div>
+
 </div>
 
-    <div class="product">
-    <img src="img/facial-mask.jpg" alt="Mascarillas Faciales En Barritas">
-    <h3>Mascarillas Faciales En Barritas</h3>
-    <p>
-        ✨$2900
-- naranja🍊🧡
-- ⁠te verde🍵💚
-- ⁠rosa🌹🩷
-- ⁠blueberry🫐💙
-    </p>
-    </div>
-    
-</div>
+<!-- BOTÓN FLOTANTE -->
+<a class="whatsapp-button" href="https://wa.me/5351010895" target="_blank">WhatsApp</a>
 
 </body>
 </html>
