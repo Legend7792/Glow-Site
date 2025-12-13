@@ -80,5 +80,12 @@
         "precio": "100ml $45usd/ 150ml 60usd",
         "descripcion": "-",
         "imagen": "img/bleu_de_chanel.jpg"
+    },
+    {
+        "categoria": "piel",
+        "nombre": "Limpiador Facial CeraVe En Crema Espumosa Para el Acné",
+        "precio": "$2400",
+        "descripcion": "💙Limpiador Facial CeraVe En Crema Espumosa Para el Acné",
+        "imagen": "img/limpiador_facial_cerave_en_crema_espumosa_para_el_acné.jpg"
     }
 ]
