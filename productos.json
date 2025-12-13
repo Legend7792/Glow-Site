@@ -66,5 +66,12 @@
         "🌿 fórmula vegana y pura": "Ideal para pieles sensibles y todos los tipos de piel.",
         "🙌 suaviza y mejora la elasticidad": "Deja la piel más lisa y con aspecto saludable.",
         "✨ efecto antiedad": "Reduce la apariencia de líneas finas y signos de deshidratación."
+    },
+    {
+        "categoria": "cabello",
+        "nombre": "Mascarilla capilar DOVE",
+        "precio": "$2800",
+        "descripcion": "Mascarilla capilar DOVE con 12% de keratina 300gr",
+        "imagen": "img/mascarilla_capilar_dove.jpg"
     }
 ]
