@@ -12,5 +12,12 @@
         "precio": "",
         "descripcion": "",
         "imagen": "img/.jpg"
+    },
+    {
+        "categoria": "",
+        "nombre": "",
+        "precio": "",
+        "descripcion": "",
+        "imagen": "img/.jpg"
     }
 ]
