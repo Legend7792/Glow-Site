@@ -47,5 +47,12 @@
         "precio": "$2400",
         "descripcion": "-",
         "imagen": "img/toallas_de_microfibra_para_el_cabello.jpg"
+    },
+    {
+        "categoria": "Pelo",
+        "nombre": "Toallas de microfibra para el cabello",
+        "precio": "$2400",
+        "descripcion": "",
+        "imagen": "img/toallas_de_microfibra_para_el_cabello.jpg"
     }
 ]
