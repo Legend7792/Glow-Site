@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "categoria": "",
+        "nombre": "",
+        "precio": "",
+        "descripcion": "",
+        "imagen": "img/.jpg"
+    }
+]
