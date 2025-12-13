@@ -87,5 +87,12 @@
         "precio": "$2400",
         "descripcion": "💙Limpiador Facial CeraVe En Crema Espumosa Para el Acné",
         "imagen": "img/limpiador_facial_cerave_en_crema_espumosa_para_el_acné.jpg"
+    },
+    {
+        "categoria": "fragancias",
+        "nombre": "Million",
+        "precio": "$35usd",
+        "descripcion": "-",
+        "imagen": "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/million.jpg"
     }
 ]
