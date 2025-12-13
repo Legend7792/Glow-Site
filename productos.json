@@ -90,13 +90,6 @@
     },
     {
         "categoria": "fragancias",
-        "nombre": "Million",
-        "precio": "$35usd",
-        "descripcion": "-",
-        "imagen": "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/million.jpg"
-    },
-    {
-        "categoria": "fragancias",
         "nombre": "Millio",
         "precio": "35usd",
         "descripcion": "...",
