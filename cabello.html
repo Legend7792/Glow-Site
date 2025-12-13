@@ -1,115 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cabello - Glow</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #fff0f7;
-            color: #4a235a;
-            padding: 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabello - Glow</title>
 
-        h1 {
-            text-align: center;
-            background: #ffb6e6;
-            padding: 15px;
-            border-radius: 10px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff0f7;
+    color: #4a235a;
+    padding: 20px;
+}
 
-        .product-list {
-            margin-top: 30px;
-        }
+h1 {
+    text-align: center;
+    background: #ffb6e6;
+    padding: 15px;
+    border-radius: 10px;
+}
 
-        .product {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+.product {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-        /* Ajuste para múltiples imágenes */
-        .product img {
-            width: 100%;
-            max-width: 350px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: block;
-        }
+.product img {
+    width: 160px;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 10px;
+}
 
-        .ws-button {
-            display: inline-block;
-            margin-top: 15px;
-            background: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .back {
-            display: block;
-            margin-bottom: 20px;
-            font-size: 18px;
-            text-decoration: none;
-            color: #4a235a;
-        }
-
-        /* BOTÓN FLOTANTE WHATSAPP */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 25px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            padding: 14px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 999;
-        }
-
-        .whatsapp-button:hover {
-            background: #1da851;
-        }
-    </style>
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
 </head>
+
 <body>
 
-<a class="back" href="index.html">← Volver al inicio</a>
+<a href="index.html">← Volver</a>
 
+<h1>Cabello</h1>
 
-<h1>Productos para el Cabello</h1>
+<div id="lista-productos"></div>
 
-<div class="product-list">
+<a class="whatsapp-button"
+   href="https://wa.me/5351010895"
+   target="_blank">
+   WhatsApp
+</a>
 
-<div class="product">
-    <img src="img/shampoo1.jpg" alt="Shampoo Reparador">
-    <h3>Shampoo Reparador</h3>
-    <p>
-        Repara puntas abiertas y reduce el frizz.  
-        Precio: $10 USD
-    </p>
-</div>
-
-<div class="product">
-    <img src="img/mascarilla1.jpg" alt="Mascarilla Nutritiva">
-    <h3>Mascarilla Nutritiva</h3>
-    <p>
-        Ideal para cabello seco o maltratado.  
-        Precio: $14 USD
-    </p>
-</div>
-
-</div>
-
-<a class="whatsapp-button" href="https://wa.me/5351010895" target="_blank">WhatsApp</a>
+<script src="productos.js"></script>
+<script>
+  cargarProductos("Cabello");
+</script>
 
 </body>
 </html>
