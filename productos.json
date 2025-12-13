@@ -33,12 +33,5 @@
         "precio": "",
         "descripcion": "",
         "imagen": "img/.jpg"
-    },
-    {
-        "categoria": "cabello",
-        "nombre": "Mascarilla capilar DOVE",
-        "precio": "$2800",
-        "descripcion": "Mascarilla capilar DOVE con 12% de keratina 300gr",
-        "imagen": "img/mascarilla_capilar_dove.jpg"
     }
 ]
