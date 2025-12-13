@@ -52,12 +52,5 @@
         "precio": "$2800",
         "descripcion": "Mascarilla capilar DOVE con 12% de keratina 300gr",
         "imagen": "img/mascarilla_capilar_dove.jpg"
-    },
-    {
-        "categoria": "fragancias",
-        "nombre": "Bleu de Chanel",
-        "precio": "100ml $45usd/ 150ml 60usd",
-        "descripcion": "-",
-        "imagen": "img/bleu_de_chanel.jpg"
     }
 ]
