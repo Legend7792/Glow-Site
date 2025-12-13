@@ -1,159 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuidado de la Piel - Glow</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #fff0f7;
-            color: #4a235a;
-            padding: 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piel - Glow</title>
 
-        h1 {
-            text-align: center;
-            background: #ffb6e6;
-            padding: 15px;
-            border-radius: 10px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff0f7;
+    color: #4a235a;
+    padding: 20px;
+}
 
-        .product-list {
-            margin-top: 30px;
-        }
+h1 {
+    text-align: center;
+    background: #ffb6e6;
+    padding: 15px;
+    border-radius: 10px;
+}
 
-        .product {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+.product {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-        /* Ajuste para múltiples imágenes */
-        .product img {
-            width: 100%;
-            max-width: 350px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: block;
-        }
+.product img {
+    width: 160px;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 10px;
+}
 
-        .ws-button {
-            display: inline-block;
-            margin-top: 15px;
-            background: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .back {
-            display: block;
-            margin-bottom: 20px;
-            font-size: 18px;
-            text-decoration: none;
-            color: #4a235a;
-        }
-
-        /* BOTÓN FLOTANTE WHATSAPP */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 25px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            padding: 14px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 999;
-        }
-
-        .whatsapp-button:hover {
-            background: #1da851;
-        }
-    </style>
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
 </head>
+
 <body>
 
-<a class="back" href="index.html">← Volver al inicio</a>
+<a href="index.html">← Volver</a>
 
-<h1>Productos para el Cuidado de la Piel</h1>
+<h1>Cuidado de la Piel</h1>
 
-<div class="product-list">
+<div id="lista-productos"></div>
 
-    <!-- PRODUCTO 1 -->
-    <div class="product">
-        <img src="img/night.jpg" alt="Mascarillas Faciales Nocturnas">
-        <h3>Mascarillas Faciales Nocturnas</h3>
-        <p>Crema facial nocturna Retinol
-Marca: NEVADA 💙
-Línea: BBROSE 💜
-Crema de Noche con Romero , Vitamina A y Retinol.
-- Unifica el tono de la piel y aumenta su frescura.
-- Elimina las manchas oscuras.
-- Específicamente diseñada para piel grasa.
-- Hidratación ideal para la piel.
-✨$2800</p>
-    </div>
+<a class="whatsapp-button"
+   href="https://wa.me/5351010895"
+   target="_blank">
+   WhatsApp
+</a>
 
-    <!-- PRODUCTO 2 -->
-    <div class="product">
-        <img src="img/facial-mask.jpg" alt="Mascarillas Faciales En Barritas">
-
-        <!-- Si quieres más imágenes, SOLO COPIA ESTO -->
-        <!--
-        <img src="img/imagen2.jpg" alt="Imagen adicional">
-        <img src="img/imagen3.jpg" alt="Imagen adicional">
-        -->
-
-        <h3>Mascarillas Faciales En Barritas</h3>
-        <p>
-            ✨ $2900  
-            - Naranja 🍊  
-            - Té verde 🍵  
-            - Rosa 🌹  
-            - Blueberry 🫐  
-        </p>
-    </div>
-    
-<div class="product">
-    <img src="img/protect.jpg" alt="Protector Solar">
-    </h3>Protector Solar</h3>
-    <p>
-        Neutrogena Protector Ultra Sheer 50SPF
-* Sensacion invisible y liviana sobre tu piel.
-* No comedogénico
-* ⁠No graso
-* Absorción rápida
-* Sin oxibenzona
-* De amplio espectro contra los rayos UVA/UVB
-✨:$2200
-    </p>
-</div>
-
-<div class="product">
-    <img src="img/fmask.jpg" alt="Mascarilla Facial">
-    <h3>Mascarilla Facial</h3>
-    <p>
-        Retinol Anti-Aging Ice Water Sleeping Mask | Despierta con una piel joven y radiante
-Mientras duermes, esta mascarilla nocturna ayuda a regenerar y rejuvenecer tu piel.
-Enriquecida con retinol, suaviza líneas finas, mejora la textura y promueve una apariencia más firme y luminosa. Su gel refrescante aporta una sensación delicada y relajante, convirtiendo tu rutina nocturna en un momento de mimo y amor propio. 🌸
-💖 Ideal para: todo tipo de piel, especialmente piel madura o con signos de envejecimiento.
-✨$3000
-    </p>
-</div>
-    
-</div>
-
-<!-- BOTÓN FLOTANTE -->
-<a class="whatsapp-button" href="https://wa.me/5351010895" target="_blank">WhatsApp</a>
+<script src="productos.js"></script>
+<script>
+  cargarProductos("piel");
+</script>
 
 </body>
 </html>
