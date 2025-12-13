@@ -1,119 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragancias - Glow</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #fff0f7;
-            color: #4a235a;
-            padding: 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fragancias - Glow</title>
 
-        h1 {
-            text-align: center;
-            background: #ffb6e6;
-            padding: 15px;
-            border-radius: 10px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff0f7;
+    color: #4a235a;
+    padding: 20px;
+}
 
-        .product-list {
-            margin-top: 30px;
-        }
+h1 {
+    text-align: center;
+    background: #ffb6e6;
+    padding: 15px;
+    border-radius: 10px;
+}
 
-        .product {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+.product {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-        /* Ajuste para múltiples imágenes */
-        .product img {
-            width: 100%;
-            max-width: 350px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: block;
-        }
+.product img {
+    width: 160px;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 10px;
+}
 
-        .ws-button {
-            display: inline-block;
-            margin-top: 15px;
-            background: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .back {
-            display: block;
-            margin-bottom: 20px;
-            font-size: 18px;
-            text-decoration: none;
-            color: #4a235a;
-        }
-
-        /* BOTÓN FLOTANTE WHATSAPP */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 25px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            padding: 14px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 999;
-        }
-
-        .whatsapp-button:hover {
-            background: #1da851;
-        }
-    </style>
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
 </head>
+
 <body>
 
-<a class="back" href="index.html">← Volver al inicio</a>
+<a href="index.html">← Volver</a>
 
 <h1>Fragancias</h1>
 
-<div class="product-list">
+<div id="lista-productos"></div>
 
-<div class="product">
-    <img src="img/bleu-chanel.jpg" alt="Perfume Bleu de Chanel">
-    <h3>Bleu de Chanel</h3>
-    <p>
-    </p>
-</div>
+<a class="whatsapp-button"
+   href="https://wa.me/5351010895"
+   target="_blank">
+   WhatsApp
+</a>
 
-<div class="product">
-    <img src="img/fantasy.jpg" alt="Fantasy">
-    </h3>Fantasy</h3>
-    <p>
-        *Fantasy* 🩷
-Es una fragancia dulce, femenina y totalmente adictiva, creada para la mujer que ama los aromas que envuelven, conquistan y se quedan en la memoria.
-Es un perfume gourmand, cremoso y juguetón… perfecto para las amantes de lo dulce.
-
-🍰 Notas principales: kiwi, lichi, cupcake, jazmín y vainilla.
-🌸 Sensación: súper dulce, sensual y coqueta.
-💖 Efecto: aroma fuerte, duradero y encantador que deja una estela dulce e irresistible.
-
-Es el perfume de la chica soñadora, romántica y atrevida… esa que encanta con su ternura pero también con su fuerza.
-    </p>
-</div>
-
-</div>
-
-<a class="whatsapp-button" href="https://wa.me/5351010895" target="_blank">WhatsApp</a>
+<script src="productos.js"></script>
+<script>
+  cargarProductos("fragancias");
+</script>
 
 </body>
 </html>
