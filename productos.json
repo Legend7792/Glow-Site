@@ -54,5 +54,17 @@
         "precio": "$2400",
         "descripcion": "",
         "imagen": "img/toallas_de_microfibra_para_el_cabello.jpg"
+    },
+    {
+        "categoria": "piel",
+        "nombre": "Serum de ácido hialurónico 2% + B5 de The Ordinary",
+        "precio": "$2100",
+        "descripcion": "Formulado con ácido hialurónico , este sérum retiene la humedad en la piel, manteniéndola hidratada, firme y flexible durante todo el día.",
+        "imagen": "img/serum_de_ácido_hialurónico_2%_+_b5_de_the_ordinary.jpg",
+        "beneficios clave": "",
+        "💧 hidratación intensiva": "Atrae y retiene la humedad en las capas de la piel.",
+        "🌿 fórmula vegana y pura": "Ideal para pieles sensibles y todos los tipos de piel.",
+        "🙌 suaviza y mejora la elasticidad": "Deja la piel más lisa y con aspecto saludable.",
+        "✨ efecto antiedad": "Reduce la apariencia de líneas finas y signos de deshidratación."
     }
 ]
