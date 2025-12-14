@@ -8,8 +8,14 @@ function cargarProductos(categoria) {
         p.categoria.toLowerCase() === categoria.toLowerCase()
       );
 
+      // ESTADO SIN PRODUCTOS (MEJORADO)
       if (filtrados.length === 0) {
-        contenedor.innerHTML = "<p>No hay productos disponibles.</p>";
+        contenedor.innerHTML = `
+          <div class="empty-state">
+            <h2>Próximamente</h2>
+            <p>Estamos preparando nuevos productos para esta categoría.</p>
+          </div>
+        `;
         return;
       }
 
