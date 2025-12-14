@@ -1,3 +1,5 @@
+let productosCargados = [];
+
 function cargarProductos(categoria) {
   fetch("productos.json?v=" + Date.now())
     .then(res => res.json())
@@ -7,6 +9,8 @@ function cargarProductos(categoria) {
       const filtrados = productos.filter(p =>
         p.categoria.toLowerCase() === categoria.toLowerCase()
       );
+      
+      productosCargados = filtrados;
 
       // ESTADO SIN PRODUCTOS (MEJORADO)
       if (filtrados.length === 0) {
@@ -21,7 +25,7 @@ function cargarProductos(categoria) {
 
       contenedor.innerHTML = "";
 
-      filtrados.forEach(p => {
+      filtrados.forEach((p, index) => {
         contenedor.innerHTML += `
           <div class="product-card" onclick='abrirModal(${JSON.stringify(p)})'>
             <div class="img-wrapper">
