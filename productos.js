@@ -65,6 +65,8 @@ function abrirModal(producto) {
     encodeURIComponent(producto.nombre);
 
   document.getElementById("product-modal").classList.remove("hidden");
+  
+  history.pushState({ modal: true }, "");
 }
 
 function cerrarModal() {
@@ -75,3 +77,28 @@ function abrirModalPorIndice(index) {
   const producto = productosCargados[index];
   abrirModal(producto);
 }
+
+function cerrarModal() {
+  const modal = document.getElementById("product-modal");
+  modal.classList.add("hidden");
+
+  if (history.state && history.state.modal) {
+    history.back();
+  }
+}
+
+window.addEventListener("popstate", () => {
+  const modal = document.getElementById("product-modal");
+  if (modal && !modal.classList.contains("hidden")) {
+    modal.classList.add("hidden");
+  }
+});
+
+document.addEventListener("click", e => {
+  const modal = document.getElementById("product-modal");
+  if (!modal || modal.classList.contains("hidden")) return;
+
+  if (e.target === modal) {
+    cerrarModal();
+  }
+});
