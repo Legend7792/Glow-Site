@@ -1,28 +1,45 @@
 function cargarProductos(categoria) {
   fetch("productos.json")
     .then(res => res.json())
-    .then(data => {
-      const contenedor = document.getElementById("lista-productos");
+    .then(productos => {
+      const contenedor = document.getElementById("products");
+
+      const filtrados = productos.filter(p =>
+        p.categoria.toLowerCase() === categoria.toLowerCase()
+      );
+
+      if (filtrados.length === 0) {
+        contenedor.innerHTML = "<p>No hay productos disponibles.</p>";
+        return;
+      }
+
       contenedor.innerHTML = "";
 
-      data
-        .filter(p => p.categoria.toLowerCase() === categoria)
-        .forEach(p => {
-          const div = document.createElement("div");
-          div.className = "product";
+      filtrados.forEach(p => {
+        contenedor.innerHTML += `
+          <div class="product-card">
+            <div class="img-wrapper">
+              <img src="${p.imagen}" alt="${p.nombre}">
+            </div>
 
-          div.innerHTML = `
-            <img src="${p.imagen}">
-            <h3>${p.nombre}</h3>
-            <p>${p.descripcion}</p>
-            <strong>${p.precio}</strong><br><br>
-            <a href="https://wa.me/5351010895" target="_blank"
-               style="background:#25D366;color:white;padding:8px 12px;border-radius:8px;text-decoration:none;">
-               Contactar por WhatsApp
-            </a>
-          `;
+            <div class="product-info">
+              <h3>${p.nombre}</h3>
+              <p class="price">${p.precio}</p>
+              <p class="desc">${p.descripcion}</p>
 
-          contenedor.appendChild(div);
-        });
+              <a class="buy-btn"
+                href="https://wa.me/5351010895?text=Quiero%20comprar%20${encodeURIComponent(p.nombre)}"
+                target="_blank">
+                Comprar por WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+      });
+    })
+    .catch(err => {
+      document.getElementById("products").innerHTML =
+        "<p>Error cargando productos.</p>";
+      console.error(err);
     });
 }
