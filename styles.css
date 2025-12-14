@@ -99,3 +99,55 @@
   font-size: 24px;
   margin-bottom: 10px;
 }
+
+/* ---------- MODAL ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 90%;
+  padding: 20px;
+  text-align: center;
+  animation: modalFade 0.3s ease;
+}
+
+.modal-content img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.modal-precio {
+  font-weight: bold;
+  color: #d63384;
+  margin: 10px 0;
+}
+
+.close-modal {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #999;
+}
+
+@keyframes modalFade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
