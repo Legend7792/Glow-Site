@@ -23,7 +23,7 @@ function cargarProductos(categoria) {
 
       filtrados.forEach(p => {
         contenedor.innerHTML += `
-          <div class="product-card">
+          <div class="product-card" onclick='abrirModal(${JSON.stringify(p)})'>
             <div class="img-wrapper">
               <img src="${p.imagen}" alt="${p.nombre}">
             </div>
@@ -48,4 +48,21 @@ function cargarProductos(categoria) {
         "<p>Error cargando productos.</p>";
       console.error(err);
     });
+}
+
+function abrirModal(producto) {
+  document.getElementById("modal-img").src = producto.imagen;
+  document.getElementById("modal-nombre").innerText = producto.nombre;
+  document.getElementById("modal-precio").innerText = producto.precio;
+  document.getElementById("modal-desc").innerText = producto.descripcion;
+
+  document.getElementById("modal-buy").href =
+    "https://wa.me/5351010895?text=Quiero%20comprar%20" +
+    encodeURIComponent(producto.nombre);
+
+  document.getElementById("product-modal").classList.remove("hidden");
+}
+
+function cerrarModal() {
+  document.getElementById("product-modal").classList.add("hidden");
 }
