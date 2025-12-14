@@ -1,5 +1,5 @@
 function cargarProductos(categoria) {
-  fetch("productos.json")
+  fetch("productos.json?v=" + Date.now())
     .then(res => res.json())
     .then(productos => {
       const contenedor = document.getElementById("products");
