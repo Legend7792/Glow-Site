@@ -1,62 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuidado Personal | Glow</title>
+  <meta charset="UTF-8">
+  <title>Glow | Cabello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body { font-family: Arial, sans-serif; background: #fff; margin: 0; }
-        header {
-            background: linear-gradient(135deg, #ff80bf, #ffb3d9);
-            padding: 20px;
-            text-align: center;
-            font-size: 26px;
-            color: white;
-            font-weight: bold;
-        }
-        .container { max-width: 900px; margin: auto; padding: 20px; }
-        h2 { color: #d63384; }
+  <!-- EVITAR CACHE -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
 
-        .product {
-            background: #ffe6f2;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 12px;
-        }
-
-        .whatsapp-button {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25D366;
-            color: white;
-            font-size: 18px;
-            padding: 14px 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            font-weight: bold;
-        }
-    </style>
+  <!-- CSS general -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-<header>Cuidado Personal</header>
 
-<div class="container">
+  <!-- ENCABEZADO -->
+  <header class="header">
+    <h1>Productos Para El Cabello</h1>
+    <a href="index.html" class="back">← Volver</a>
+  </header>
 
-    <h2>Productos disponibles</h2>
+  <!-- CONTENEDOR DE PRODUCTOS -->
+  <section class="products-grid" id="products">
+    <!-- Aquí el JS inyecta los productos -->
+  </section>
 
-</div>
+  <!-- JS -->
+  <script src="productos.js"></script>
+  <script>
+    cargarProductos("cabello");
 
-<a class="whatsapp-button" href="https://wa.me/5351010895">WhatsApp</a>
+    // REFRESCO AUTOMÁTICO CADA 15s (opcional pero recomendado)
+    setInterval(() => {
+      cargarProductos("cabello");
+    }, 15000);
+  </script>
 
 </body>
 </html>
