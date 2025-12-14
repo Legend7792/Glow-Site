@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Glow Beauty Store: descubre productos de belleza, fragancias, cuidados para la piel, el cabello y más.">
-    <meta property="og:title" content="Glow | Belleza y Fragancias">
-    <meta property="og:description" content="Glow Beauty Store: descubre productos de belleza, fragancias, cuidados para la piel, el cabello y más.">
-    <meta property="og:image" content="url-a-una-imagen.jpg"> <!-- Actualiza con la URL de una imagen representativa -->
     <title>Glow | Belleza y Fragancias</title>
 
-    <style>
-        html {
-            font-size: 16px; /* Base de 16px para rem */
-        }
+    <meta name="description" content="Glow Beauty Store: fragancias, cuidado de la piel, cabello, maquillaje y más.">
+    <meta property="og:title" content="Glow Beauty Store">
+    <meta property="og:description" content="Descubre productos de belleza seleccionados para ti.">
+    <meta property="og:image" content="img/preview.jpg">
 
+    <style>
         body {
             margin: 0;
-            font-family: "Arial", sans-serif;
+            font-family: Arial, sans-serif;
             background: #fff;
             color: #333;
         }
 
-        /* Encabezado */
+        /* HEADER */
         header {
             background: linear-gradient(135deg, #ff80bf, #ffb3d9);
             padding: 25px;
@@ -30,139 +26,218 @@
             color: white;
             font-size: 2rem;
             font-weight: bold;
-            letter-spacing: 1px;
         }
 
-        /* Contenedor principal */
-        .intro {
+        /* HERO */
+        .hero {
+            padding: 80px 20px;
             text-align: center;
-            padding: 40px 20px;
+            background: linear-gradient(135deg, #ffe6f2, #fff);
         }
 
-        .intro h2 {
-            font-size: 1.75rem;
-            color: #d63384;
-            margin-bottom: 10px;
+        .hero h1 {
+            font-size: 2.6rem;
+            color: #cc0e74;
+            margin-bottom: 15px;
         }
 
-        .intro p {
-            font-size: 1rem;
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: auto;
             color: #555;
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.5;
         }
 
-        /* Grid de categorías */
+        .hero a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 30px;
+            background: #cc0e74;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero a:hover {
+            background: #a30b5d;
+        }
+
+        /* CATEGORÍAS */
         .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            padding: 30px;
-            max-width: 1000px;
+            padding: 50px 20px;
+            max-width: 1100px;
             margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
         }
 
         .category-card {
-            border-radius: 14px;
             background: #ffe6f2;
-            padding: 25px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
             text-align: center;
-            box-shadow: 0 0 12px rgba(0,0,0,0.05);
-            transition: 0.3s ease;
-            cursor: pointer;
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
-            background: #ffccdf;
+            transform: translateY(-6px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
         }
 
         .category-card h3 {
-            margin: 0;
+            margin: 15px 0;
             color: #cc0e74;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
         }
 
-        /* Botón de WhatsApp */
+        .category-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* BENEFICIOS */
+        .benefits {
+            background: #fff4f9;
+            padding: 50px 20px;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .benefits div {
+            padding: 20px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        /* CTA */
+        .cta {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffb3d9, #ffe6f2);
+        }
+
+        .cta h2 {
+            color: #cc0e74;
+            margin-bottom: 20px;
+        }
+
+        .cta a {
+            padding: 15px 30px;
+            background: #25D366;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #f7f7f7;
+            padding: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* WHATSAPP */
         .whatsapp-button {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            background-color: #25D366;
+            background: #25D366;
             color: white;
-            font-size: 1.125rem;
-            padding: 14px 18px;
+            padding: 15px 20px;
             border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            transition: 0.3s;
             font-weight: bold;
-        }
-
-        .whatsapp-button:hover {
-            background-color: #1da851;
-        }
-
-        /* Hacer que las tarjetas sean clicables */
-        .category-link {
             text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
         }
-
     </style>
-
 </head>
+
 <body>
 
 <header>
     Glow Beauty Store
 </header>
 
-<section class="intro">
-    <h2>Bienvenida a Glow</h2>
-    <p>
-        Descubre fragancias, productos para la piel, el cabello y mucho más.  
-        Aquí pronto podrás explorar todos nuestros artículos cuidadosamente seleccionados, pensados para resaltar tu belleza y estilo.
-    </p>
+<section class="hero">
+    <h1>Belleza que realza tu esencia</h1>
+    <p>Fragancias, cuidado personal y maquillaje seleccionados especialmente para ti</p>
+    <a href="#categorias">Explorar categorías</a>
 </section>
 
-<section class="categories">
+<section id="categorias" class="categories">
 
     <a class="category-link" href="fragancias.html">
         <div class="category-card">
+            <img src="img/cat-fragancias.jpg" alt="Fragancias">
             <h3>Fragancias</h3>
         </div>
     </a>
 
     <a class="category-link" href="piel.html">
         <div class="category-card">
+            <img src="img/cat-piel.jpg" alt="Piel">
             <h3>Piel</h3>
         </div>
     </a>
 
     <a class="category-link" href="cabello.html">
         <div class="category-card">
+            <img src="img/cat-cabello.jpg" alt="Cabello">
             <h3>Cabello</h3>
         </div>
     </a>
 
     <a class="category-link" href="maquillaje.html">
         <div class="category-card">
+            <img src="img/cat-maquillaje.jpg" alt="Maquillaje">
             <h3>Maquillaje</h3>
         </div>
     </a>
 
     <a class="category-link" href="cuidado-personal.html">
         <div class="category-card">
+            <img src="img/cat-cuidado.jpg" alt="Cuidado personal">
             <h3>Cuidado Personal</h3>
         </div>
     </a>
 
 </section>
 
-<!-- Botón de WhatsApp -->
-<a class="whatsapp-button" href="https://wa.me/5351010895" target="_blank" aria-label="Contactar por WhatsApp" role="button">
-    Contactar por WhatsApp
+<section class="benefits">
+    <div>✨ Productos seleccionados</div>
+    <div>💄 Tendencias actuales</div>
+    <div>📦 Actualización constante</div>
+    <div>💬 Atención personalizada</div>
+</section>
+
+<section class="cta">
+    <h2>¿Buscas algo especial?</h2>
+    <a href="https://wa.me/5351010895" target="_blank">Contáctanos por WhatsApp</a>
+</section>
+
+<footer>
+    <p>© 2025 Glow Beauty Store</p>
+    <p>Belleza · Fragancias · Cuidado personal</p>
+</footer>
+
+<a class="whatsapp-button" href="https://wa.me/5351010895" target="_blank">
+    WhatsApp
 </a>
 
 </body>
