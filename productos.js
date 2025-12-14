@@ -27,7 +27,7 @@ function cargarProductos(categoria) {
 
       filtrados.forEach((p, index) => {
         contenedor.innerHTML += `
-          <div class="product-card" onclick='abrirModal(${JSON.stringify(p)})'>
+          <div class="product-card" onclick="abrirModalPorIndice(${index})">
             <div class="img-wrapper">
               <img src="${p.imagen}" alt="${p.nombre}">
             </div>
@@ -69,4 +69,9 @@ function abrirModal(producto) {
 
 function cerrarModal() {
   document.getElementById("product-modal").classList.add("hidden");
+}
+
+function abrirModalPorIndice(index) {
+  const producto = productosCargados[index];
+  abrirModal(producto);
 }
