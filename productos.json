@@ -40,12 +40,5 @@
         "precio": "-",
         "descripcion": "-",
         "imagen": "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/bleu_de_chanel.jpg"
-    },
-    {
-        "categoria": "cabello",
-        "nombre": "test",
-        "precio": "$1",
-        "descripcion": "prueba simple",
-        "imagen": "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/test.jpg"
     }
 ]
