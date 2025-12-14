@@ -69,10 +69,6 @@ function abrirModal(producto) {
   history.pushState({ modal: true }, "");
 }
 
-function cerrarModal() {
-  document.getElementById("product-modal").classList.add("hidden");
-}
-
 function abrirModalPorIndice(index) {
   const producto = productosCargados[index];
   abrirModal(producto);
