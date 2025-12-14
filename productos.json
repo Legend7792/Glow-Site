@@ -33,12 +33,5 @@
         "precio": "",
         "descripcion": "",
         "imagen": "img/.jpg"
-    },
-    {
-        "categoria": "piel",
-        "nombre": "test",
-        "precio": "$1",
-        "descripcion": "prueba simple",
-        "imagen": "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/test.jpg"
     }
 ]
