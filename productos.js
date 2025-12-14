@@ -7,8 +7,6 @@ function cargarProductos(categoria) {
       const filtrados = productos.filter(p =>
         p.categoria.toLowerCase() === categoria.toLowerCase()
       );
-      if (filtrados.length === ultimaCantidad) return;
-      ultimaCantidad = filtrados.length;
 
       // ESTADO SIN PRODUCTOS (MEJORADO)
       if (filtrados.length === 0) {
