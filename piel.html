@@ -5,6 +5,11 @@
   <title>Glow | Piel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- EVITAR CACHE -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+
   <!-- CSS general -->
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -26,6 +31,11 @@
   <script src="productos.js"></script>
   <script>
     cargarProductos("piel");
+
+    // REFRESCO AUTOMÁTICO CADA 15s (opcional pero recomendado)
+    setInterval(() => {
+      cargarProductos("piel");
+    }, 15000);
   </script>
 
 </body>
