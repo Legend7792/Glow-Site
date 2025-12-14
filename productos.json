@@ -1,40 +1,5 @@
 [
     {
-        "categoria": "",
-        "nombre": "",
-        "precio": "",
-        "descripcion": "",
-        "imagen": "img/.jpg"
-    },
-    {
-        "categoria": "",
-        "nombre": "",
-        "precio": "",
-        "descripcion": "",
-        "imagen": "img/.jpg"
-    },
-    {
-        "categoria": "",
-        "nombre": "",
-        "precio": "",
-        "descripcion": "",
-        "imagen": "img/.jpg"
-    },
-    {
-        "categoria": "",
-        "nombre": "",
-        "precio": "",
-        "descripcion": "",
-        "imagen": "img/.jpg"
-    },
-    {
-        "categoria": "",
-        "nombre": "",
-        "precio": "",
-        "descripcion": "",
-        "imagen": "img/.jpg"
-    },
-    {
         "categoria": "piel",
         "nombre": "test",
         "precio": "$1",
