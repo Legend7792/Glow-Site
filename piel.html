@@ -1,73 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Piel - Glow</title>
+  <meta charset="UTF-8">
+  <title>Glow | Piel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #fff0f7;
-    color: #4a235a;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-    background: #ffb6e6;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.product {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.product img {
-    width: 160px;
-    border-radius: 10px;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.whatsapp-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    padding: 14px 18px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-}
-</style>
+  <!-- CSS general -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<a href="index.html">← Volver</a>
+  <!-- ENCABEZADO -->
+  <header class="header">
+    <h1>Productos Para El Cuidado De La Piel</h1>
+    <a href="index.html" class="back">← Volver</a>
+  </header>
 
-<h1>Cuidado de la Piel</h1>
+  <!-- CONTENEDOR DE PRODUCTOS -->
+  <section class="products-grid" id="products">
+    <!-- Aquí el JS inyecta los productos -->
+  </section>
 
-<div id="lista-productos"></div>
-
-<a class="whatsapp-button"
-   href="https://wa.me/5351010895"
-   target="_blank">
-   WhatsApp
-</a>
-
-<script src="productos.js"></script>
-<script>
-  cargarProductos("piel");
-</script>
+  <!-- JS -->
+  <script src="productos.js"></script>
+  <script>
+    cargarProductos("piel");
+  </script>
 
 </body>
 </html>
