@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maquillaje - Glow</title>
-    <style>
-        body { margin: 0; font-family: Arial; background: #fff0f7; color: #4a235a; padding: 20px; }
-        h1 { text-align: center; background: #ffb6e6; padding: 15px; border-radius: 10px; }
-        .product-list { margin-top: 30px; }
-        .product { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .product img { width: 150px; border-radius: 10px; }
-        .back { display: block; margin-bottom: 20px; font-size: 18px; text-decoration: none; color: #4a235a; }
-        .whatsapp-button {
-            position: fixed; bottom: 20px; right: 20px;
-            background: #25D366; color: white;
-            padding: 12px 22px; border-radius: 50px;
-            text-decoration: none; font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Glow | Maquillaje</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- EVITAR CACHE -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+
+  <!-- CSS general -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<a class="back" href="index.html">← Volver al inicio</a>
+  <!-- ENCABEZADO -->
+  <header class="header">
+    <h1>Productos de Maquillaje</h1>
+    <a href="index.html" class="back">← Volver</a>
+  </header>
 
-<h1>Productos de Maquillaje</h1>
+  <!-- CONTENEDOR DE PRODUCTOS -->
+  <section class="products-grid" id="products">
+    <!-- Aquí el JS inyecta los productos -->
+  </section>
 
-<div class="product-list">
+  <!-- JS -->
+  <script src="productos.js"></script>
+  <script>
+    cargarProductos("maquillaje");
 
-<div class="product">
-    <img src="img/base1.jpg" alt="Base de Maquillaje">
-    <h3>Base de Maquillaje</h3>
-    <p>
-        Cobertura media-alta con acabado natural.  
-        Precio: $18 USD
-    </p>
-</div>
+    // REFRESCO AUTOMÁTICO CADA 15s (opcional pero recomendado)
+    setInterval(() => {
+      cargarProductos("maquillaje");
+    }, 15000);
+  </script>
 
-<div class="product">
-    <img src="img/labial1.jpg" alt="Labial Mate">
-    <h3>Labial Mate</h3>
-    <p>
-        Larga duración y colores vibrantes.  
-        Precio: $8 USD
-    </p>
-</div>
+<!-- MODAL DE PRODUCTO -->
+  <div id="product-modal" class="modal hidden">
+  <div class="modal-content">
+    
+    <button class="close-modal" onclick="cerrarModal()">×</button>
 
-</div>
+    <img id="modal-img" src="" alt="Producto">
 
-<a class="whatsapp-button" href="https://wa.me/5351010895" target="_blank">WhatsApp</a>
+    <h2 id="modal-nombre"></h2>
+    <p id="modal-precio" class="price"></p>
+    <p id="modal-desc"></p>
 
+    <a id="modal-buy" class="buy-btn" target="_blank">
+      Comprar por WhatsApp
+    </a>
+
+  </div>
+  </div>
+  
 </body>
 </html>
