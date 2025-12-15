@@ -18,7 +18,7 @@
 
   <!-- ENCABEZADO -->
   <header class="header">
-    <h1>Productos Para El Cabello</h1>
+    <h1>Productos Para El cuidado del cabello</h1>
     <a href="index.html" class="back">← Volver</a>
   </header>
 
@@ -37,38 +37,25 @@
       cargarProductos("cabello");
     }, 15000);
   </script>
-  
-<!-- MODAL DE PRODUCTO -->
-<div id="product-modal" class="modal hidden">
-  <div class="modal-content">
-    <span class="close-modal" onclick="cerrarModal()">×</span>
 
-    <img id="modal-img" src="" alt="">
+<!-- MODAL DE PRODUCTO -->
+  <div id="product-modal" class="modal hidden">
+  <div class="modal-content">
+    
+    <button class="close-modal" onclick="cerrarModal()">×</button>
+
+    <img id="modal-img" src="" alt="Producto">
+
     <h2 id="modal-nombre"></h2>
-    <p id="modal-precio" class="modal-precio"></p>
+    <p id="modal-precio" class="price"></p>
     <p id="modal-desc"></p>
 
     <a id="modal-buy" class="buy-btn" target="_blank">
       Comprar por WhatsApp
     </a>
+
   </div>
-</div>
-
-<!-- MODAL DE PRODUCTO -->
-<div id="product-modal" class="modal hidden">
-  <div class="modal-content">
-    <span class="close-modal" onclick="cerrarModal()">×</span>
-
-    <img id="modal-img" src="" alt="">
-    <h2 id="modal-nombre"></h2>
-    <p id="modal-precio" class="modal-precio"></p>
-    <p id="modal-desc"></p>
-
-    <a id="modal-buy" class="buy-btn" target="_blank">
-      Comprar por WhatsApp
-    </a>
   </div>
-</div>
   
 </body>
 </html>
