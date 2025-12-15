@@ -66,10 +66,26 @@ function abrirModal(producto) {
   dots.innerHTML = "";
   currentIndex = 0;
 
-  producto.imagenes.forEach((img, i) => {
-    track.innerHTML += `<img src="${img}" />`;
-    dots.innerHTML += `<span class="${i === 0 ? "active" : ""}"></span>`;
-  });
+  // Revisar que producto.imagenes exista y sea un array
+  if (producto.imagenes && producto.imagenes.length > 0) {
+    producto.imagenes.forEach((img, i) => {
+      track.innerHTML += `<img src="${img}" />`;
+      dots.innerHTML += `<span class="${i === 0 ? "active" : ""}"></span>`;
+    });
+    iniciarAutoplay();
+  }
+
+  document.getElementById("modal-nombre").innerText = producto.nombre || "";
+  document.getElementById("modal-precio").innerText = producto.precio || "";
+  document.getElementById("modal-desc").innerText = producto.descripcion || "";
+
+  document.getElementById("modal-buy").href =
+    "https://wa.me/5351010895?text=Quiero%20comprar%20" +
+    encodeURIComponent(producto.nombre || "");
+
+  document.getElementById("product-modal").classList.remove("hidden");
+  history.pushState({ modal: true }, "");
+}
 
   document.getElementById("modal-nombre").innerText = producto.nombre;
   document.getElementById("modal-precio").innerText = producto.precio;
