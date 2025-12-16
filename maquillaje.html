@@ -30,7 +30,7 @@
   <!-- JS -->
   <script src="productos.js"></script>
   <script>
-    cargarProductos("piel");
+    cargarProductos("maquillaje");
 
     // REFRESCO AUTOMÁTICO CADA 15s (opcional pero recomendado)
     setInterval(() => {
@@ -41,14 +41,16 @@
 <!-- MODAL DE PRODUCTO -->
   <div id="product-modal" class="modal hidden">
   <div class="modal-content">
-    
+
     <button class="close-modal" onclick="cerrarModal()">×</button>
 
+    <!-- CARRUSEL (AQUÍ VA) -->
     <div class="carousel">
-  <div class="carousel-track" id="carousel-track"></div>
-  <div class="carousel-dots" id="carousel-dots"></div>
+      <div class="carousel-track" id="carousel-track"></div>
+      <div class="carousel-dots" id="carousel-dots"></div>
     </div>
 
+    <!-- INFO DEL PRODUCTO -->
     <h2 id="modal-nombre"></h2>
     <p id="modal-precio" class="price"></p>
     <p id="modal-desc"></p>
