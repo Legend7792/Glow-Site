@@ -1,3 +1,6 @@
+let currentIndex = 0;
+let autoplayInterval;
+
 let productosCargados = [];
 
 function cargarProductos(categoria) {
@@ -55,6 +58,27 @@ function abrirModalPorIndice(index) {
 }
 
 function abrirModal(producto) {
+  const track = document.getElementById("carousel-track");
+  const dots = document.getElementById("carousel-dots");
+
+  track.innerHTML = "";
+  dots.innerHTML = "";
+  currentIndex = 0;
+
+  // Construir array seguro de imágenes
+  let imagenes = [];
+
+  if (Array.isArray(producto.imagenes) && producto.imagenes.length > 0) {
+    imagenes = producto.imagenes;
+  } else if (producto.imagen) {
+    imagenes = [producto.imagen];
+  }
+
+  imagenes.forEach((img, i) => {
+    track.innerHTML += `<img src="${img}">`;
+    dots.innerHTML += `<span class="${i === 0 ? "active" : ""}"></span>`;
+  });
+
   document.getElementById("modal-nombre").innerText = producto.nombre;
   document.getElementById("modal-precio").innerText = producto.precio;
   document.getElementById("modal-desc").innerText = producto.descripcion;
@@ -65,7 +89,49 @@ function abrirModal(producto) {
 
   document.getElementById("product-modal").classList.remove("hidden");
   history.pushState({ modal: true }, "");
+
+  if (imagenes.length > 1) iniciarAutoplay();
 }
+
+function moverCarrusel(index) {
+  const track = document.getElementById("carousel-track");
+  const dots = document.querySelectorAll(".carousel-dots span");
+
+  currentIndex = index;
+  track.style.transform = `translateX(-${index * 100}%)`;
+
+  dots.forEach(d => d.classList.remove("active"));
+  if (dots[index]) dots[index].classList.add("active");
+}
+
+function iniciarAutoplay() {
+  clearInterval(autoplayInterval);
+  autoplayInterval = setInterval(() => {
+    const total = document.querySelectorAll("#carousel-track img").length;
+    if (total <= 1) return;
+    currentIndex = (currentIndex + 1) % total;
+    moverCarrusel(currentIndex);
+  }, 3000);
+}
+
+let startX = 0;
+
+document.getElementById("carousel-track").addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.getElementById("carousel-track").addEventListener("touchend", e => {
+  const endX = e.changedTouches[0].clientX;
+  const diff = startX - endX;
+
+  const total = document.querySelectorAll("#carousel-track img").length;
+
+  if (diff > 50 && currentIndex < total - 1) {
+    moverCarrusel(currentIndex + 1);
+  } else if (diff < -50 && currentIndex > 0) {
+    moverCarrusel(currentIndex - 1);
+  }
+});
 
 function cerrarModal() {
   const modal = document.getElementById("product-modal");
