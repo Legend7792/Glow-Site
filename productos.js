@@ -9,10 +9,9 @@ function cargarProductos(categoria) {
       const filtrados = productos.filter(p =>
         p.categoria.toLowerCase() === categoria.toLowerCase()
       );
-      
+
       productosCargados = filtrados;
 
-      // ESTADO SIN PRODUCTOS (MEJORADO)
       if (filtrados.length === 0) {
         contenedor.innerHTML = `
           <div class="empty-state">
@@ -36,12 +35,6 @@ function cargarProductos(categoria) {
               <h3>${p.nombre}</h3>
               <p class="price">${p.precio}</p>
               <p class="desc">${p.descripcion}</p>
-
-              <a class="buy-btn"
-                href="https://wa.me/5351010895?text=Quiero%20comprar%20${encodeURIComponent(p.nombre)}"
-                target="_blank">
-                Comprar por WhatsApp
-              </a>
             </div>
           </div>
         `;
@@ -54,39 +47,14 @@ function cargarProductos(categoria) {
     });
 }
 
-function abrirModal(producto) 
-let currentIndex = 0;
-let autoplayInterval;
+/* ---------- MODAL ---------- */
 
-function abrirModal(producto) {
-  const track = document.getElementById("carousel-track");
-  const dots = document.getElementById("carousel-dots");
-
-  track.innerHTML = "";
-  dots.innerHTML = "";
-  currentIndex = 0;
-
-  // Revisar que producto.imagenes exista y sea un array
-  if (producto.imagenes && producto.imagenes.length > 0) {
-    producto.imagenes.forEach((img, i) => {
-      track.innerHTML += `<img src="${img}" />`;
-      dots.innerHTML += `<span class="${i === 0 ? "active" : ""}"></span>`;
-    });
-    iniciarAutoplay();
-  }
-
-  document.getElementById("modal-nombre").innerText = producto.nombre || "";
-  document.getElementById("modal-precio").innerText = producto.precio || "";
-  document.getElementById("modal-desc").innerText = producto.descripcion || "";
-
-  document.getElementById("modal-buy").href =
-    "https://wa.me/5351010895?text=Quiero%20comprar%20" +
-    encodeURIComponent(producto.nombre || "");
-
-  document.getElementById("product-modal").classList.remove("hidden");
-  history.pushState({ modal: true }, "");
+function abrirModalPorIndice(index) {
+  const producto = productosCargados[index];
+  abrirModal(producto);
 }
 
+function abrirModal(producto) {
   document.getElementById("modal-nombre").innerText = producto.nombre;
   document.getElementById("modal-precio").innerText = producto.precio;
   document.getElementById("modal-desc").innerText = producto.descripcion;
@@ -96,14 +64,7 @@ function abrirModal(producto) {
     encodeURIComponent(producto.nombre);
 
   document.getElementById("product-modal").classList.remove("hidden");
-
-  iniciarAutoplay();
   history.pushState({ modal: true }, "");
-}
-
-function abrirModalPorIndice(index) {
-  const producto = productosCargados[index];
-  abrirModal(producto);
 }
 
 function cerrarModal() {
