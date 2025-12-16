@@ -130,14 +130,3 @@ document.addEventListener("click", e => {
     cerrarModal();
   }
 });
-
-function moverCarrusel(index) {
-  const track = document.getElementById("carousel-track");
-  const dots = document.querySelectorAll(".carousel-dots span");
-
-  currentIndex = index;
-  track.style.transform = `translateX(-${index * 100}%)`;
-
-  dots.forEach(d => d.classList.remove("active"));
-  dots[index].classList.add("active");
-}
