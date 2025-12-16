@@ -141,31 +141,3 @@ function moverCarrusel(index) {
   dots.forEach(d => d.classList.remove("active"));
   dots[index].classList.add("active");
 }
-
-function iniciarAutoplay() {
-  clearInterval(autoplayInterval);
-  autoplayInterval = setInterval(() => {
-    const total = document.querySelectorAll("#carousel-track img").length;
-    currentIndex = (currentIndex + 1) % total;
-    moverCarrusel(currentIndex);
-  }, 3000);
-  }
-
-let startX = 0;
-
-document.getElementById("carousel-track").addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-
-document.getElementById("carousel-track").addEventListener("touchend", e => {
-  const endX = e.changedTouches[0].clientX;
-  const diff = startX - endX;
-
-  const total = document.querySelectorAll("#carousel-track img").length;
-
-  if (diff > 50 && currentIndex < total - 1) {
-    moverCarrusel(currentIndex + 1);
-  } else if (diff < -50 && currentIndex > 0) {
-    moverCarrusel(currentIndex - 1);
-  }
-});
