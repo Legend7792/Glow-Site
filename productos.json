@@ -1,14 +1,1 @@
-[
-    {
-        "categoria": "piel",
-        "nombre": "crema",
-        "precio": "$1",
-        "descripcion": "prueba simple",
-        "imagenes": [
-            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/crema_1.jpg",
-            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/crema_2.jpg",
-            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/crema_3.jpg",
-            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/crema_4.jpg"
-        ]
-    }
-]
+[]
