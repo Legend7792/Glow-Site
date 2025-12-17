@@ -44,17 +44,18 @@
 /* IMAGEN CONTROLADA */
 .img-wrapper {
   width: 100%;
-  /* eliminamos height y overflow */
+  /* eliminamos height fijo */
+  overflow: hidden;
   border-radius: 12px;
   text-align: center; /* centra la imagen si es más pequeña que el contenedor */
   background: #f5f5f5;
 }
 
 .img-wrapper img {
-  width: 100%;
-  height: auto; /* mantiene proporciones */
+  max-width: 100%;
+  height: auto;
+  object-fit: contain; /* mantiene proporciones */
   display: inline-block;
-  object-fit: none; /* para que no recorte nada */
 }
 
 /* INFO */
