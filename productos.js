@@ -1,8 +1,11 @@
-let currentIndex = 0;
-let autoplayInterval;
-
 let productosCargados = [];
+let currentIndex = 0;
+let autoplayInterval = null;
+let startX = 0;
 
+/* ===============================
+   CARGAR PRODUCTOS POR CATEGORÍA
+================================ */
 function cargarProductos(categoria) {
   fetch("productos.json?v=" + Date.now())
     .then(res => res.json())
@@ -31,13 +34,19 @@ function cargarProductos(categoria) {
         contenedor.innerHTML += `
           <div class="product-card" onclick="abrirModalPorIndice(${index})">
             <div class="img-wrapper">
-              <img src="${p.imagen}" alt="${p.nombre}">
+              <img src="${p.imagenes && p.imagenes.length ? p.imagenes[0] : ''}" alt="${p.nombre}">
             </div>
 
             <div class="product-info">
               <h3>${p.nombre}</h3>
               <p class="price">${p.precio}</p>
               <p class="desc">${p.descripcion}</p>
+
+              <a class="buy-btn"
+                href="https://wa.me/5351010895?text=Quiero%20comprar%20${encodeURIComponent(p.nombre)}"
+                target="_blank">
+                Comprar por WhatsApp
+              </a>
             </div>
           </div>
         `;
@@ -50,14 +59,16 @@ function cargarProductos(categoria) {
     });
 }
 
-/* ---------- MODAL ---------- */
-
+/* ===============================
+   ABRIR MODAL
+================================ */
 function abrirModalPorIndice(index) {
   const producto = productosCargados[index];
   abrirModal(producto);
 }
 
 function abrirModal(producto) {
+  const modal = document.getElementById("product-modal");
   const track = document.getElementById("carousel-track");
   const dots = document.getElementById("carousel-dots");
 
@@ -65,77 +76,102 @@ function abrirModal(producto) {
   dots.innerHTML = "";
   currentIndex = 0;
 
-  // Construir array seguro de imágenes
-  let imagenes = [];
+  const imagenes = producto.imagenes || [];
 
-  if (Array.isArray(producto.imagenes) && producto.imagenes.length > 0) {
-    imagenes = producto.imagenes;
-  } else if (producto.imagen) {
-    imagenes = [producto.imagen];
-  }
+  if (imagenes.length === 0) return;
 
   imagenes.forEach((img, i) => {
-    track.innerHTML += `<img src="${img}">`;
+    track.innerHTML += `<img src="${img}" draggable="false">`;
     dots.innerHTML += `<span class="${i === 0 ? "active" : ""}"></span>`;
   });
 
-  document.getElementById("modal-nombre").innerText = producto.nombre;
-  document.getElementById("modal-precio").innerText = producto.precio;
-  document.getElementById("modal-desc").innerText = producto.descripcion;
+  moverCarrusel(0);
+
+  if (imagenes.length > 1) {
+    iniciarAutoplay();
+  }
+
+  document.getElementById("modal-nombre").innerText = producto.nombre || "";
+  document.getElementById("modal-precio").innerText = producto.precio || "";
+  document.getElementById("modal-desc").innerText = producto.descripcion || "";
 
   document.getElementById("modal-buy").href =
     "https://wa.me/5351010895?text=Quiero%20comprar%20" +
-    encodeURIComponent(producto.nombre);
+    encodeURIComponent(producto.nombre || "");
 
-  document.getElementById("product-modal").classList.remove("hidden");
+  modal.classList.remove("hidden");
   history.pushState({ modal: true }, "");
-
-  if (imagenes.length > 1) iniciarAutoplay();
 }
 
+/* ===============================
+   CARRUSEL
+================================ */
 function moverCarrusel(index) {
   const track = document.getElementById("carousel-track");
-  const dots = document.querySelectorAll(".carousel-dots span");
+  const dots = document.querySelectorAll("#carousel-dots span");
 
   currentIndex = index;
   track.style.transform = `translateX(-${index * 100}%)`;
 
-  dots.forEach(d => d.classList.remove("active"));
-  if (dots[index]) dots[index].classList.add("active");
+  dots.forEach((d, i) => {
+    d.classList.toggle("active", i === index);
+  });
 }
 
 function iniciarAutoplay() {
-  clearInterval(autoplayInterval);
+  detenerAutoplay();
   autoplayInterval = setInterval(() => {
     const total = document.querySelectorAll("#carousel-track img").length;
     if (total <= 1) return;
-    currentIndex = (currentIndex + 1) % total;
-    moverCarrusel(currentIndex);
+
+    if (currentIndex < total - 1) {
+      moverCarrusel(currentIndex + 1);
+    } else {
+      moverCarrusel(0);
+    }
   }, 3000);
 }
 
-let startX = 0;
-
-document.getElementById("carousel-track").addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-
-document.getElementById("carousel-track").addEventListener("touchend", e => {
-  const endX = e.changedTouches[0].clientX;
-  const diff = startX - endX;
-
-  const total = document.querySelectorAll("#carousel-track img").length;
-
-  if (diff > 50 && currentIndex < total - 1) {
-    moverCarrusel(currentIndex + 1);
-  } else if (diff < -50 && currentIndex > 0) {
-    moverCarrusel(currentIndex - 1);
+function detenerAutoplay() {
+  if (autoplayInterval) {
+    clearInterval(autoplayInterval);
+    autoplayInterval = null;
   }
-});
+}
 
+/* ===============================
+   GESTOS / INTERACCIÓN USUARIO
+================================ */
+const track = document.getElementById("carousel-track");
+
+if (track) {
+  track.addEventListener("touchstart", e => {
+    detenerAutoplay();
+    startX = e.touches[0].clientX;
+  });
+
+  track.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    const total = document.querySelectorAll("#carousel-track img").length;
+
+    if (diff > 50 && currentIndex < total - 1) {
+      moverCarrusel(currentIndex + 1);
+    } else if (diff < -50 && currentIndex > 0) {
+      moverCarrusel(currentIndex - 1);
+    }
+  });
+
+  track.addEventListener("mousedown", detenerAutoplay);
+}
+
+/* ===============================
+   CERRAR MODAL
+================================ */
 function cerrarModal() {
   const modal = document.getElementById("product-modal");
   modal.classList.add("hidden");
+  detenerAutoplay();
 
   if (history.state && history.state.modal) {
     history.back();
@@ -146,6 +182,7 @@ window.addEventListener("popstate", () => {
   const modal = document.getElementById("product-modal");
   if (modal && !modal.classList.contains("hidden")) {
     modal.classList.add("hidden");
+    detenerAutoplay();
   }
 });
 
