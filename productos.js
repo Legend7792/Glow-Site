@@ -74,22 +74,15 @@ function abrirModal(producto) {
 
   track.innerHTML = "";
   dots.innerHTML = "";
-  currentIndex = 0;
+  let currentIndex = 0;
 
   const imagenes = producto.imagenes || [];
-
   if (imagenes.length === 0) return;
 
   imagenes.forEach((img, i) => {
     track.innerHTML += `<img src="${img}" draggable="false">`;
-    dots.innerHTML += `<span class="${i === 0 ? "active" : ""}"></span>`;
+    dots.innerHTML += `<span class="${i === 0 ? "active" : ""}" onclick="moverCarrusel(${i})"></span>`;
   });
-
-  moverCarrusel(0);
-
-  if (imagenes.length > 1) {
-    iniciarAutoplay();
-  }
 
   document.getElementById("modal-nombre").innerText = producto.nombre || "";
   document.getElementById("modal-precio").innerText = producto.precio || "";
@@ -100,7 +93,8 @@ function abrirModal(producto) {
     encodeURIComponent(producto.nombre || "");
 
   modal.classList.remove("hidden");
-  history.pushState({ modal: true }, "");
+
+  if (imagenes.length > 1) iniciarAutoplay();
 }
 
 /* ===============================
@@ -113,9 +107,7 @@ function moverCarrusel(index) {
   currentIndex = index;
   track.style.transform = `translateX(-${index * 100}%)`;
 
-  dots.forEach((d, i) => {
-    d.classList.toggle("active", i === index);
-  });
+  dots.forEach((d, i) => d.classList.toggle("active", i === index));
 }
 
 function iniciarAutoplay() {
@@ -124,11 +116,8 @@ function iniciarAutoplay() {
     const total = document.querySelectorAll("#carousel-track img").length;
     if (total <= 1) return;
 
-    if (currentIndex < total - 1) {
-      moverCarrusel(currentIndex + 1);
-    } else {
-      moverCarrusel(0);
-    }
+    currentIndex = (currentIndex + 1) % total;
+    moverCarrusel(currentIndex);
   }, 3000);
 }
 
@@ -137,32 +126,6 @@ function detenerAutoplay() {
     clearInterval(autoplayInterval);
     autoplayInterval = null;
   }
-}
-
-/* ===============================
-   GESTOS / INTERACCIÓN USUARIO
-================================ */
-const track = document.getElementById("carousel-track");
-
-if (track) {
-  track.addEventListener("touchstart", e => {
-    detenerAutoplay();
-    startX = e.touches[0].clientX;
-  });
-
-  track.addEventListener("touchend", e => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = startX - endX;
-    const total = document.querySelectorAll("#carousel-track img").length;
-
-    if (diff > 50 && currentIndex < total - 1) {
-      moverCarrusel(currentIndex + 1);
-    } else if (diff < -50 && currentIndex > 0) {
-      moverCarrusel(currentIndex - 1);
-    }
-  });
-
-  track.addEventListener("mousedown", detenerAutoplay);
 }
 
 /* ===============================
@@ -177,20 +140,3 @@ function cerrarModal() {
     history.back();
   }
 }
-
-window.addEventListener("popstate", () => {
-  const modal = document.getElementById("product-modal");
-  if (modal && !modal.classList.contains("hidden")) {
-    modal.classList.add("hidden");
-    detenerAutoplay();
-  }
-});
-
-document.addEventListener("click", e => {
-  const modal = document.getElementById("product-modal");
-  if (!modal || modal.classList.contains("hidden")) return;
-
-  if (e.target === modal) {
-    cerrarModal();
-  }
-});
