@@ -198,8 +198,11 @@ to { opacity: 1; transform: scale(1); }
 }
 
 .desc-collapsed {
-  max-height: 4.5em; /* ~3 líneas */
-}
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  }
 
 .desc-expanded {
   max-height: 100vh;
