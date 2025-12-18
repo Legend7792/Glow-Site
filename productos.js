@@ -67,23 +67,15 @@ function abrirModalPorIndice(index) {
   abrirModal(producto);
 }
 
+let currentIndex = 0;
+let autoplayInterval = null;
+
 function abrirModal(producto) {
   const modal = document.getElementById("product-modal");
   const track = document.getElementById("carousel-track");
-  const dots = document.getElementById("carousel-dots");
+  const dotsContainer = document.getElementById("carousel-dots");
 
-  track.innerHTML = "";
-  dots.innerHTML = "";
-  let currentIndex = 0;
-
-  const imagenes = producto.imagenes || [];
-  if (imagenes.length === 0) return;
-
-  imagenes.forEach((img, i) => {
-    track.innerHTML += `<img src="${img}" draggable="false">`;
-    dots.innerHTML += `<span class="${i === 0 ? "active" : ""}" onclick="moverCarrusel(${i})"></span>`;
-  });
-
+  // Texto
   document.getElementById("modal-nombre").innerText = producto.nombre || "";
   document.getElementById("modal-precio").innerText = producto.precio || "";
   document.getElementById("modal-desc").innerText = producto.descripcion || "";
@@ -92,7 +84,33 @@ function abrirModal(producto) {
     "https://wa.me/5351010895?text=Quiero%20comprar%20" +
     encodeURIComponent(producto.nombre || "");
 
+  // LIMPIAR carrusel anterior
+  track.innerHTML = "";
+  dotsContainer.innerHTML = "";
+  currentIndex = 0;
+
+  const imagenes = producto.imagenes?.length
+    ? producto.imagenes
+    : [producto.imagen];
+
+  imagenes.forEach((src, i) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = producto.nombre || "";
+    track.appendChild(img);
+
+    const dot = document.createElement("span");
+    dot.addEventListener("click", () => {
+      moverCarrusel(i);
+      detenerAutoplay();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  moverCarrusel(0);
+
   modal.classList.remove("hidden");
+  history.pushState({ modal: true }, "");
 
   if (imagenes.length > 1) iniciarAutoplay();
 }
@@ -107,7 +125,9 @@ function moverCarrusel(index) {
   currentIndex = index;
   track.style.transform = `translateX(-${index * 100}%)`;
 
-  dots.forEach((d, i) => d.classList.toggle("active", i === index));
+  dots.forEach((d, i) =>
+    d.classList.toggle("active", i === index)
+  );
 }
 
 function iniciarAutoplay() {
@@ -128,15 +148,30 @@ function detenerAutoplay() {
   }
 }
 
+
+
 /* ===============================
    CERRAR MODAL
 ================================ */
+document.addEventListener("click", e => {
+  const modal = document.getElementById("product-modal");
+  if (!modal || modal.classList.contains("hidden")) return;
+
+  if (e.target === modal) {
+    cerrarModal();
+  }
+});
+
+window.addEventListener("popstate", () => {
+  const modal = document.getElementById("product-modal");
+  if (modal && !modal.classList.contains("hidden")) {
+    cerrarModal();
+  }
+});
+
+
 function cerrarModal() {
   const modal = document.getElementById("product-modal");
   modal.classList.add("hidden");
   detenerAutoplay();
-
-  if (history.state && history.state.modal) {
-    history.back();
-  }
 }
