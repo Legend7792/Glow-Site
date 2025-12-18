@@ -78,7 +78,7 @@ function abrirModal(producto) {
   // Texto
   document.getElementById("modal-nombre").innerText = producto.nombre || "";
   document.getElementById("modal-precio").innerText = producto.precio || "";
-  cargarDescripcion(producto.descripcion);
+  
 
   document.getElementById("modal-buy").href =
     "https://wa.me/5351010895?text=Quiero%20comprar%20" +
@@ -112,7 +112,11 @@ function abrirModal(producto) {
 
   modal.classList.remove("hidden");
   history.pushState({ modal: true }, "");
-
+   
+  setTimeout(() => {
+  cargarDescripcion(producto.descripcion);
+}, 300);
+   
   habilitarSwipe();
 
   if (imagenes.length > 1) iniciarAutoplay();
