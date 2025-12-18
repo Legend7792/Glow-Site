@@ -2,6 +2,7 @@ let productosCargados = [];
 let currentIndex = 0;
 let autoplayInterval = null;
 let startX = 0;
+let isInteracting = false;
 
 /* ===============================
    CARGAR PRODUCTOS POR CATEGORÍA
@@ -112,6 +113,8 @@ function abrirModal(producto) {
   modal.classList.remove("hidden");
   history.pushState({ modal: true }, "");
 
+  habilitarSwipe();
+
   if (imagenes.length > 1) iniciarAutoplay();
 }
 
@@ -128,6 +131,36 @@ function moverCarrusel(index) {
   dots.forEach((d, i) =>
     d.classList.toggle("active", i === index)
   );
+}
+
+function habilitarSwipe() {
+  const track = document.getElementById("carousel-track");
+
+  if (!track) return;
+
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+    isInteracting = true;
+    detenerAutoplay(); // ⛔ PAUSA INMEDIATA
+  });
+
+  track.addEventListener("touchend", e => {
+    if (!isInteracting) return;
+
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    const total = track.children.length;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0 && currentIndex < total - 1) {
+        moverCarrusel(currentIndex + 1);
+      } else if (diff < 0 && currentIndex > 0) {
+        moverCarrusel(currentIndex - 1);
+      }
+    }
+
+    isInteracting = false;
+  });
 }
 
 function iniciarAutoplay() {
