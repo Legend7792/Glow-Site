@@ -186,3 +186,34 @@ to { opacity: 1; transform: scale(1); }
 .carousel-dots span.active {
   background: #e91e63;
  }
+
+.desc-wrapper {
+  position: relative;
+}
+
+#modal-desc {
+  line-height: 1.5;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+.desc-collapsed {
+  max-height: 4.5em; /* ~3 líneas */
+}
+
+.desc-expanded {
+  max-height: 100vh;
+}
+
+.desc-toggle {
+  background: none;
+  border: none;
+  color: #000;
+  font-weight: 600;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
+.desc-toggle.hidden {
+  display: none;
+}
