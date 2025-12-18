@@ -13,8 +13,9 @@ function cargarProductos(categoria) {
       const contenedor = document.getElementById("products");
 
       const filtrados = productos.filter(p =>
+        p.categoria &&
         p.categoria.toLowerCase() === categoria.toLowerCase()
-      );
+        );
 
       productosCargados = filtrados;
 
@@ -87,9 +88,10 @@ function abrirModal(producto) {
   dotsContainer.innerHTML = "";
   currentIndex = 0;
 
-  const imagenes = producto.imagenes?.length
-    ? producto.imagenes
-    : [producto.imagen];
+  const imagenes = Array.isArray(producto.imagenes)
+  ? producto.imagenes
+  : [];
+   if (!imagenes.length) return;
 
   imagenes.forEach((src, i) => {
     const img = document.createElement("img");
