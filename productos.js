@@ -153,6 +153,14 @@ function detenerAutoplay() {
 /* ===============================
    CERRAR MODAL
 ================================ */
+function cerrarModal() {
+  const modal = document.getElementById("product-modal");
+  modal.classList.add("hidden");
+  detenerAutoplay();
+}
+
+
+/* Cerrar con botón atras */
 document.addEventListener("click", e => {
   const modal = document.getElementById("product-modal");
   if (!modal || modal.classList.contains("hidden")) return;
@@ -162,6 +170,7 @@ document.addEventListener("click", e => {
   }
 });
 
+/* Cerrar con toque afuera del modal */
 window.addEventListener("popstate", () => {
   const modal = document.getElementById("product-modal");
   if (modal && !modal.classList.contains("hidden")) {
@@ -170,8 +179,3 @@ window.addEventListener("popstate", () => {
 });
 
 
-function cerrarModal() {
-  const modal = document.getElementById("product-modal");
-  modal.classList.add("hidden");
-  detenerAutoplay();
-}
