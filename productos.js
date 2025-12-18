@@ -155,6 +155,10 @@ function cerrarModal() {
   const modal = document.getElementById("product-modal");
   modal.classList.add("hidden");
   detenerAutoplay();
+
+  if (history.state && history.state.modal) {
+    history.back();
+  }
 }
 
 
