@@ -78,7 +78,7 @@ function abrirModal(producto) {
   // Texto
   document.getElementById("modal-nombre").innerText = producto.nombre || "";
   document.getElementById("modal-precio").innerText = producto.precio || "";
-  document.getElementById("modal-desc").innerText = producto.descripcion || "";
+  cargarDescripcion(producto.descripcion);
 
   document.getElementById("modal-buy").href =
     "https://wa.me/5351010895?text=Quiero%20comprar%20" +
@@ -116,6 +116,34 @@ function abrirModal(producto) {
   habilitarSwipe();
 
   if (imagenes.length > 1) iniciarAutoplay();
+}
+
+/* ===============================
+   DESCRIPCIÓN EXPANDIBLE
+================================ */
+function cargarDescripcion(texto) {
+  const desc = document.getElementById("modal-desc");
+  const toggle = document.getElementById("desc-toggle");
+
+  if (!desc || !toggle) return;
+
+  desc.textContent = texto || "";
+  desc.classList.remove("desc-expanded");
+  desc.classList.add("desc-collapsed");
+  toggle.classList.add("hidden");
+
+  requestAnimationFrame(() => {
+    if (desc.scrollHeight > desc.clientHeight) {
+      toggle.classList.remove("hidden");
+      toggle.textContent = "Leer más ▼";
+    }
+  });
+
+  toggle.onclick = () => {
+    const expandido = desc.classList.toggle("desc-expanded");
+    desc.classList.toggle("desc-collapsed", !expandido);
+    toggle.textContent = expandido ? "Leer menos ▲" : "Leer más ▼";
+  };
 }
 
 /* ===============================
@@ -190,6 +218,13 @@ function cerrarModal() {
   const modal = document.getElementById("product-modal");
   modal.classList.add("hidden");
   detenerAutoplay();
+
+  const desc = document.getElementById("modal-desc");
+  const toggle = document.getElementById("desc-toggle");
+
+  desc.classList.remove("desc-expanded");
+  desc.classList.add("desc-collapsed");
+  toggle.classList.add("hidden");
 
   if (history.state && history.state.modal) {
     history.back();
