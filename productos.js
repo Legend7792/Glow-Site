@@ -67,8 +67,6 @@ function abrirModalPorIndice(index) {
   abrirModal(producto);
 }
 
-let currentIndex = 0;
-let autoplayInterval = null;
 
 function abrirModal(producto) {
   const modal = document.getElementById("product-modal");
