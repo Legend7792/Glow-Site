@@ -136,12 +136,17 @@ function cargarDescripcion(texto) {
   desc.classList.add("desc-collapsed");
   toggle.classList.add("hidden");
 
-  setTimeout(() => {
-  if (desc.scrollHeight > desc.clientHeight + 5) {
-    toggle.classList.remove("hidden");
-    toggle.textContent = "Leer más ▼";
-  }
-}, 100);
+  // Forzar reflow
+  requestAnimationFrame(() => {
+    const lineHeight = parseFloat(getComputedStyle(desc).lineHeight);
+    const maxLines = 2;
+    const maxHeight = lineHeight * maxLines;
+
+    if (desc.scrollHeight > maxHeight + 2) {
+      toggle.classList.remove("hidden");
+      toggle.textContent = "Leer más ▼";
+    }
+  });
 
   toggle.onclick = () => {
     const expandido = desc.classList.toggle("desc-expanded");
