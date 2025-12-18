@@ -132,12 +132,12 @@ function cargarDescripcion(texto) {
   desc.classList.add("desc-collapsed");
   toggle.classList.add("hidden");
 
-  requestAnimationFrame(() => {
-    if (desc.scrollHeight > desc.clientHeight) {
-      toggle.classList.remove("hidden");
-      toggle.textContent = "Leer más ▼";
-    }
-  });
+  setTimeout(() => {
+  if (desc.scrollHeight > desc.clientHeight + 5) {
+    toggle.classList.remove("hidden");
+    toggle.textContent = "Leer más ▼";
+  }
+}, 100);
 
   toggle.onclick = () => {
     const expandido = desc.classList.toggle("desc-expanded");
