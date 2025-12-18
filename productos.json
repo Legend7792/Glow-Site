@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "categoria": "piel",
+        "nombre": "j",
+        "precio": "$1",
+        "descripcion": "prueba simple",
+        "imagenes": [
+            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/j_1.jpg"
+        ]
+    }
+]
