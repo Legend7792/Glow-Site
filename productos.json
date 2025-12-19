@@ -10,5 +10,14 @@
             "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/test_3.jpg",
             "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/test_4.jpg"
         ]
+    },
+    {
+        "categoria": "piel",
+        "nombre": "h2",
+        "precio": "$1",
+        "descripcion": "CeraVe Hydrating Cleanser – Limpiador Hidratante (Sin Fragancia)💚Limpiador facial y corporal hidratante, desarrollado con dermatólogos, ideal para piel normal a seca. Limpia suavemente mientras mantiene la barrera protectora de la piel, gracias a su fórmula con 3 ceramidas esenciales y Ácido Hialurónico. Deja la piel hidratada, suave y confortable, sin sensación de tirantez.\n✔ Limpieza suave e hidratante\n✔ Protege la barrera cutánea\n✔ Con ceramidas y ácido hialurónico\n✔ Sin fragancia\n✔ Apto para rostro y cuerpo\n✔ Ideal para uso diario\n✨$4900",
+        "imagenes": [
+            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/h2_1.jpg"
+        ]
     }
 ]
