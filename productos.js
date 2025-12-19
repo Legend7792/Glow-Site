@@ -39,10 +39,22 @@ function cargarProductos(categoria) {
               <img src="${p.imagenes && p.imagenes.length ? p.imagenes[0] : ''}" alt="${p.nombre}">
             </div>
 
+            setTimeout(activarLeerMasPortada, 50);
+
             <div class="product-info">
               <h3>${p.nombre}</h3>
               <p class="price">${p.precio}</p>
-              <p class="desc">${p.descripcion}</p>
+              <div class="desc-wrapper">
+  <p class="desc desc-collapsed" id="desc-${index}">
+    ${p.descripcion}
+  </p>
+  <button
+    class="desc-toggle hidden"
+    onclick="toggleDesc(${index})"
+    id="toggle-${index}">
+    Leer más ▼
+  </button>
+</div>
 
               <a class="buy-btn"
                 href="https://wa.me/5351010895?text=Quiero%20comprar%20${encodeURIComponent(p.nombre)}"
@@ -254,5 +266,33 @@ window.addEventListener("popstate", () => {
     cerrarModal();
   }
 });
+
+function activarLeerMasPortada() {
+  productosCargados.forEach((_, index) => {
+    const desc = document.getElementById(`desc-${index}`);
+    const toggle = document.getElementById(`toggle-${index}`);
+
+    if (!desc || !toggle) return;
+
+    const lineHeight = parseFloat(getComputedStyle(desc).lineHeight);
+    const maxHeight = lineHeight * 3;
+
+    if (desc.scrollHeight > maxHeight + 2) {
+      toggle.classList.remove("hidden");
+    }
+  });
+}
+
+function toggleDesc(index) {
+  const desc = document.getElementById(`desc-${index}`);
+  const toggle = document.getElementById(`toggle-${index}`);
+
+  const expanded = desc.classList.toggle("desc-expanded");
+  desc.classList.toggle("desc-collapsed", !expanded);
+
+  toggle.textContent = expanded
+    ? "Leer menos ▲"
+    : "Leer más ▼";
+}
 
 
