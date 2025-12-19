@@ -10,5 +10,17 @@
             "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/h2_3.jpg",
             "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/h2_4.jpg"
         ]
+    },
+    {
+        "categoria": "piel",
+        "nombre": "test",
+        "precio": "$1",
+        "descripcion": "CeraVe Renewing SA Cleanser – Limpiador Suave con Ácido Salicílico",
+        "imagenes": [
+            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/test_1.jpg",
+            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/test_2.jpg",
+            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/test_3.jpg",
+            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/test_4.jpg"
+        ]
     }
 ]
