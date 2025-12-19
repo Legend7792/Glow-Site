@@ -221,35 +221,18 @@ to { opacity: 1; transform: scale(1); }
   }
 
 /* -----Desc-portada----- */
-
-.desc-wrapper {
-  margin-bottom: 10px;
-}
-
-.desc {
-  line-height: 1.5;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.desc-collapsed {
-  max-height: 4.5em; /* 3 líneas */
-}
-
-.desc-expanded {
-  max-height: 100vh;
-}
-
-.desc-toggle {
-  background: none;
-  border: none;
-  padding: 0;
-  margin-top: 4px;
-  color: #000;
-  font-weight: 600;
+.product-card {
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.desc-toggle.hidden {
-  display: none;
+.product-card:active {
+  transform: scale(0.98);
+}
+
+.more-hint {
+  font-size: 13px;
+  color: #888;
+  display: block;
+  margin-top: 4px;
 }
