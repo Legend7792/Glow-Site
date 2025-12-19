@@ -131,23 +131,29 @@ function cargarDescripcion(texto) {
 
   if (!desc || !toggle) return;
 
+  // Asigna el texto de la descripción al elemento
   desc.textContent = texto || "";
+  
+  // Restaura los estados
   desc.classList.remove("desc-expanded");
   desc.classList.add("desc-collapsed");
   toggle.classList.add("hidden");
 
-  // Forzar reflow
+  // Forzar el reflujo de la animación
   requestAnimationFrame(() => {
+    // Calcula la altura de las líneas para decidir si se necesita "Leer más"
     const lineHeight = parseFloat(getComputedStyle(desc).lineHeight);
-    const maxLines = 2;
+    const maxLines = 2; // Ajusta el número de líneas visibles antes del botón
     const maxHeight = lineHeight * maxLines;
 
-    if (desc.scrollHeight > maxHeight + 2) {
+    // Si la altura total de la descripción excede el límite de líneas, muestra el botón
+    if (desc.scrollHeight > maxHeight) {
       toggle.classList.remove("hidden");
       toggle.textContent = "Leer más ▼";
     }
   });
 
+  // Lógica para alternar entre expandir o contraer la descripción
   toggle.onclick = () => {
     const expandido = desc.classList.toggle("desc-expanded");
     desc.classList.toggle("desc-collapsed", !expandido);
