@@ -187,6 +187,8 @@ to { opacity: 1; transform: scale(1); }
   background: #e91e63;
  }
 
+/* -------Desc-modal------ */
+
 .desc-wrapper {
   position: relative;
 }
@@ -217,3 +219,37 @@ to { opacity: 1; transform: scale(1); }
 .desc-toggle.hidden {
   display: none;
   }
+
+/* -----Desc-portada----- */
+
+.desc-wrapper {
+  margin-bottom: 10px;
+}
+
+.desc {
+  line-height: 1.5;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.desc-collapsed {
+  max-height: 4.5em; /* 3 líneas */
+}
+
+.desc-expanded {
+  max-height: 100vh;
+}
+
+.desc-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 4px;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.desc-toggle.hidden {
+  display: none;
+}
