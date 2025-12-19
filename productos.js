@@ -10,7 +10,6 @@ let isInteracting = false;
 function cargarProductos(categoria) {
   fetch("productos.json?v=" + Date.now())
     .then(res => res.json())
-     setTimeout(activarLeerMasPortada, 50);
     .then(productos => {
       const contenedor = document.getElementById("products");
 
@@ -41,18 +40,12 @@ function cargarProductos(categoria) {
             </div>
 
             <div class="product-info">
-              <h3>${p.nombre}</h3>
-              <p class="price">${p.precio}</p>
-              <div class="desc-wrapper">
-  <p class="desc desc-collapsed" id="desc-${index}">
-    ${p.descripcion}
-  </p>
-  <button
-    class="desc-toggle hidden"
-    onclick="toggleDesc(${index})"
-    id="toggle-${index}">
-    Leer más ▼
-  </button>
+            <h3>${p.nombre}</h3>
+            <p class="price">${p.precio}</p>
+            <p class="desc desc-preview">${resumirDescripcion(p.descripcion)}</p>
+
+           <span class="more-hint">Ver detalles →</span>
+  
 </div>
 
               <a class="buy-btn"
@@ -266,32 +259,12 @@ window.addEventListener("popstate", () => {
   }
 });
 
-function activarLeerMasPortada() {
-  productosCargados.forEach((_, index) => {
-    const desc = document.getElementById(`desc-${index}`);
-    const toggle = document.getElementById(`toggle-${index}`);
-
-    if (!desc || !toggle) return;
-
-    const lineHeight = parseFloat(getComputedStyle(desc).lineHeight);
-    const maxHeight = lineHeight * 3;
-
-    if (desc.scrollHeight > maxHeight + 2) {
-      toggle.classList.remove("hidden");
-    }
-  });
-}
-
-function toggleDesc(index) {
-  const desc = document.getElementById(`desc-${index}`);
-  const toggle = document.getElementById(`toggle-${index}`);
-
-  const expanded = desc.classList.toggle("desc-expanded");
-  desc.classList.toggle("desc-collapsed", !expanded);
-
-  toggle.textContent = expanded
-    ? "Leer menos ▲"
-    : "Leer más ▼";
+function resumirDescripcion(texto, max = 90) {
+  if (!texto) return "";
+  texto = texto.replace(/\s+/g, " ").trim();
+  return texto.length > max
+    ? texto.slice(0, max) + "…"
+    : texto;
 }
 
 
