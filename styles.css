@@ -193,20 +193,16 @@ to { opacity: 1; transform: scale(1); }
 
 #modal-desc {
   line-height: 1.5;
-  transition: max-height 0.3s ease;
   overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
 .desc-collapsed {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  }
+  max-height: 6em; /* 4 líneas visibles */
+}
 
 .desc-expanded {
-  max-height: none;
-  overflow: visible;
+  max-height: 100vh;
 }
 
 .desc-toggle {
@@ -220,4 +216,4 @@ to { opacity: 1; transform: scale(1); }
 
 .desc-toggle.hidden {
   display: none;
-}
+  }
