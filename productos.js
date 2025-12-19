@@ -10,10 +10,9 @@ let isInteracting = false;
 function cargarProductos(categoria) {
   fetch("productos.json?v=" + Date.now())
     .then(res => res.json())
+     setTimeout(activarLeerMasPortada, 50);
     .then(productos => {
       const contenedor = document.getElementById("products");
-
-       setTimeout(activarLeerMasPortada, 50);
 
       const filtrados = productos.filter(p =>
         p.categoria &&
