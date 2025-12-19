@@ -13,6 +13,8 @@ function cargarProductos(categoria) {
     .then(productos => {
       const contenedor = document.getElementById("products");
 
+       setTimeout(activarLeerMasPortada, 50);
+
       const filtrados = productos.filter(p =>
         p.categoria &&
         p.categoria.toLowerCase() === categoria.toLowerCase()
@@ -38,8 +40,6 @@ function cargarProductos(categoria) {
             <div class="img-wrapper">
               <img src="${p.imagenes && p.imagenes.length ? p.imagenes[0] : ''}" alt="${p.nombre}">
             </div>
-
-            setTimeout(activarLeerMasPortada, 50);
 
             <div class="product-info">
               <h3>${p.nombre}</h3>
