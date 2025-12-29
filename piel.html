@@ -17,10 +17,21 @@
 <body>
 
   <!-- ENCABEZADO -->
-  <header class="header">
-    <h1>Productos Para El Cuidado De La Piel</h1>
-    <a href="index.html" class="back">← Volver</a>
-  </header>
+<header class="header">
+  <h1>Productos De Maquillaje</h1>
+  <a href="index.html" class="back">← Volver</a>
+  
+  <!-- Barra de búsqueda -->
+<div class="search-wrapper">
+  <input
+    type="text"
+    id="search-input"
+    placeholder="Buscar productos..."
+    oninput="buscarProductos()"
+  >
+  <span class="search-icon">&#128269;</span> <!-- Lupa -->
+</div>
+</header>
 
   <!-- CONTENEDOR DE PRODUCTOS -->
   <section class="products-grid" id="products">

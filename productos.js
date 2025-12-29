@@ -3,78 +3,36 @@ let currentIndex = 0;
 let autoplayInterval = null;
 let startX = 0;
 let isInteracting = false;
+let categoriaActual = null;
 
 /* ===============================
    CARGAR PRODUCTOS POR CATEGORÍA
 ================================ */
-function cargarProductos(categoria) {
-  fetch("productos.json?v=" + Date.now())
+function cargarProductos(categoria = null) {
+  categoriaActual = categoria;
+
+  fetch("productos.json")
     .then(res => res.json())
     .then(productos => {
-      const contenedor = document.getElementById("products");
-
-      const filtrados = productos.filter(p =>
-        p.categoria &&
-        p.categoria.toLowerCase() === categoria.toLowerCase()
-        );
+      const filtrados = categoria
+        ? productos.filter(p => p.categoria === categoria)
+        : productos;
 
       productosCargados = filtrados;
 
-      if (filtrados.length === 0) {
-        contenedor.innerHTML = `
-          <div class="empty-state">
-            <h2>Próximamente</h2>
-            <p>Estamos preparando nuevos productos para esta categoría.</p>
-          </div>
-        `;
-        return;
-      }
-
-      contenedor.innerHTML = "";
-
-      filtrados.forEach((p, index) => {
-        contenedor.innerHTML += `
-          <div class="product-card" onclick="abrirModalPorIndice(${index})">
-            <div class="img-wrapper">
-              <img src="${p.imagenes && p.imagenes.length ? p.imagenes[0] : ''}" alt="${p.nombre}">
-            </div>
-
-            <div class="product-info">
-            <h3>${p.nombre}</h3>
-            <p class="price">${p.precio}</p>
-            <p class="desc desc-preview">${resumirDescripcion(p.descripcion)}</p>
-
-           <span class="more-hint">Ver detalles →</span>
-  
-</div>
-
-              <a class="buy-btn"
-                href="https://wa.me/5351010895?text=Quiero%20comprar%20${encodeURIComponent(p.nombre)}"
-                target="_blank">
-                Comprar por WhatsApp
-              </a>
-            </div>
-          </div>
-        `;
-      });
-    })
-    .catch(err => {
-      document.getElementById("products").innerHTML =
-        "<p>Error cargando productos.</p>";
-      console.error(err);
+// ⚠️ SOLO renderiza si es categoría
+if (categoria) {
+  renderizarProductos(filtrados);
+}
     });
 }
 
 /* ===============================
    ABRIR MODAL
 ================================ */
-function abrirModalPorIndice(index) {
-  const producto = productosCargados[index];
-  abrirModal(producto);
-}
-
-
 function abrirModal(producto) {
+  detenerAutoplay();
+  currentIndex = 0;
   const modal = document.getElementById("product-modal");
   const track = document.getElementById("carousel-track");
   const dotsContainer = document.getElementById("carousel-dots");
@@ -82,7 +40,7 @@ function abrirModal(producto) {
   // Texto
   document.getElementById("modal-nombre").innerText = producto.nombre || "";
   document.getElementById("modal-precio").innerText = producto.precio || "";
-  
+
 
   document.getElementById("modal-buy").href =
     "https://wa.me/5351010895?text=Quiero%20comprar%20" +
@@ -218,7 +176,76 @@ function detenerAutoplay() {
   }
 }
 
+function buscarProductos() {
+  const input = document.getElementById("search-input");
+  const termino = input.value.trim().toLowerCase();
 
+  if (termino === "") {
+    const contenedor = document.getElementById("products");
+
+    if (!categoriaActual) {
+      contenedor.innerHTML = "";
+    } else {
+      cargarProductos(categoriaActual);
+    }
+    return;
+  }
+
+  const filtrados = productosCargados.filter(p =>
+    p.nombre.toLowerCase().includes(termino) ||
+    (p.descripcion && p.descripcion.toLowerCase().includes(termino))
+  );
+
+  renderizarProductos(filtrados);
+}
+
+function renderizarProductos(filtrados) {
+  const contenedor = document.getElementById("products");
+  contenedor.innerHTML = "";
+
+  if (filtrados.length === 0) {
+    contenedor.innerHTML = `
+      <div class="empty-state">
+        <h2>Próximamente</h2>
+        <p>Estamos preparando nuevos productos para esta categoría.</p>
+      </div>
+    `;
+    return;
+  }
+
+  filtrados.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+
+    card.innerHTML = `
+      <div class="img-wrapper">
+        <img src="${p.imagenes?.[0] || ""}" alt="${p.nombre}">
+      </div>
+
+      <div class="product-info">
+        <h3>${p.nombre}</h3>
+        <p class="price">${p.precio}</p>
+        <p class="desc desc-preview">${resumirDescripcion(p.descripcion)}</p>
+        <span class="more-hint">Ver detalles →</span>
+      </div>
+
+      <a class="buy-btn"
+        href="https://wa.me/5351010895?text=Quiero%20comprar%20${encodeURIComponent(p.nombre)}"
+        target="_blank">
+        Comprar por WhatsApp
+      </a>
+    `;
+
+    // ✅ Click solo en la info (modal)
+    const info = card.querySelector(".product-info");
+    info.addEventListener("click", () => {
+      abrirModal(p);
+    });
+
+    // 🔑 ESTO FALTABA
+    contenedor.appendChild(card);
+  });
+}
 
 /* ===============================
    CERRAR MODAL
@@ -266,5 +293,6 @@ function resumirDescripcion(texto, max = 90) {
     ? texto.slice(0, max) + "…"
     : texto;
 }
+
 
 

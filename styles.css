@@ -1,6 +1,6 @@
 /* RESET BÁSICO */
 
-{
+* {
 box-sizing: border-box;
 margin: 0;
 padding: 0;
@@ -105,28 +105,21 @@ margin-bottom: 10px;
 }
 
 /* ---------- MODAL ---------- */
-.modal {
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.6);
-display: flex;
-align-items: center;
-justify-content: center;
-z-index: 999;
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 92%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 20px;
+  text-align: center;
+  animation: modalFade 0.3s ease;
+  position: relative;
 }
 
 .modal.hidden {
 display: none;
-}
-
-.modal-content {
-background: white;
-border-radius: 16px;
-max-width: 420px;
-width: 90%;
-padding: 20px;
-text-align: center;
-animation: modalFade 0.3s ease;
 }
 
 .modal-precio {
@@ -236,3 +229,27 @@ to { opacity: 1; transform: scale(1); }
   display: block;
   margin-top: 4px;
 }
+
+/* -----buscador---- */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#search-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 400px;
+  margin-right: 10px;
+}
+
+.search-icon {
+  font-size: 20px;
+  color: #e91e63;
+  cursor: pointer;
+}
+
