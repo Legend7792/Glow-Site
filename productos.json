@@ -1,15 +1,6 @@
 [
     {
         "categoria": "piel",
-        "nombre": "h2",
-        "precio": "$1",
-        "descripcion": "CeraVe Hydrating Cleanser – Limpiador Hidratante (Sin Fragancia)💚Limpiador facial y corporal hidratante, desarrollado con dermatólogos, ideal para piel normal a seca. Limpia suavemente mientras mantiene la barrera protectora de la piel, gracias a su fórmula con 3 ceramidas esenciales y Ácido Hialurónico. Deja la piel hidratada, suave y confortable, sin sensación de tirantez.\n✔ Limpieza suave e hidratante\n✔ Protege la barrera cutánea\n✔ Con ceramidas y ácido hialurónico\n✔ Sin fragancia\n✔ Apto para rostro y cuerpo\n✔ Ideal para uso diario\n✨$4900",
-        "imagenes": [
-            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/h2_1.jpg"
-        ]
-    },
-    {
-        "categoria": "piel",
         "nombre": "test",
         "precio": "$1",
         "descripcion": "CeraVe Renewing SA Cleanser – Limpiador Suave con Ácido Salicílico\nLimpiador facial no comedogénico y no resecante, formulado con Ácido Salicílico para ayudar a exfoliar suavemente, limpiar los poros y renovar la piel. Ideal para piel normal a grasa o con tendencia acneica, dejando el rostro suave, limpio y equilibrado.\n✔ Exfoliación suave\n✔ Limpieza profunda sin resecar\n✔ No comedogénico\n✔ Ideal para uso diario\n✨$4900",
