@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "categoria": "piel",
+        "nombre": "test",
+        "precio": "$1",
+        "descripcion": "🌙 El combo retinol + sérum Cicaplast B5 es ideal para:\n\n- Renovar la piel: el retinol estimula la regeneración celular y mejora textura y tono.  \n- Prevenir irritación: el Cicaplast B5 calma, hidrata y refuerza la barrera cutánea, reduciendo sequedad y enrojecimiento.  \n- Resultados equilibrados: potencia los beneficios del retinol sin sacrificar confort, logrando una piel más uniforme, suave y protegida.  \nCombo: ✨$5400",
+        "imagenes": [
+            "https://raw.githubusercontent.com/Legend7792/Glow-Site/main/img/test_1.jpg"
+        ]
+    }
+]
