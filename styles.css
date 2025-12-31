@@ -177,19 +177,25 @@ to { opacity: 1; transform: scale(1); }
 }
 
 .carousel-dots {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
   margin-top: 12px;
 }
 
 .carousel-dots span {
   width: 9px;
   height: 9px;
-  background: #ddd;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
 }
 
 .carousel-dots span.active {
   background: #e91e63;
- }
+  transform: scale(1.25);
+}
 
 /* -------Desc-modal------ */
 
